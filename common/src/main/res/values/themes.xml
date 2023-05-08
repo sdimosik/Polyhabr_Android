@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Polyhabr" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/whitest</item>
+        <item name="colorPrimaryVariant">@color/whitest</item>
+        <item name="colorOnPrimary">@color/green</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/whitest</item>
+        <item name="colorSecondaryVariant">@color/whitest</item>
+        <item name="colorOnSecondary">@color/gray_light</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/green_light</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>

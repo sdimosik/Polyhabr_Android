@@ -1,0 +1,101 @@
+ext {
+    general = [
+            applicationId: "ru.sdimosik.polyhabr"
+    ]
+
+    versions = [
+            kotlin                        : '1.7.10',
+            coreKtx                       : '1.7.0',
+            appCompat                     : '1.4.1',
+            material                      : '1.5.0',
+            constraintLayout              : '2.1.3',
+            junit                         : '4.13.2',
+            androidtTestJunit             : '1.1.3',
+            espresso                      : '3.4.0',
+            navigation                    : '2.4.1',
+            lifecycle                     : '2.4.0',
+            glide                         : '4.13.0',
+            view_binding_property_delegate: '1.5.6',
+            retrofit                      : '2.9.0',
+            okhttp                        : '4.9.3',
+            dagger                        : '2.41',
+            hilt                          : '2.41',
+            fragment                      : '1.4.1',
+            gson                          : '2.8.9',
+            adapterDelegate               : '4.3.2',
+            workerKtx                     : '2.7.1',
+            swipeToRefresh                : '1.1.0',
+            guava                         : '31.0.1-android',
+            guavaKotlin                   : '1.6.0',
+            callbackToFutureAdapter       : '1.1.0',
+            cicerone                      : '7.1',
+            splashscreen                  : '1.0.0',
+            rxjava                        : '3.1.6',
+            rxkotlin                      : '3.0.1',
+            rxandroid                     : '3.0.2',
+            rxjavaadapter                 : '2.9.0'
+    ]
+
+    navigation = ['navigarion-fragment': "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+                  'navigation-ui'      : "androidx.navigation:navigation-ui-ktx:${versions.navigation}"]
+
+    coreKtx = "androidx.core:core-ktx:${versions.coreKtx}"
+
+    appCompat = "androidx.appcompat:appcompat:${versions.appCompat}"
+
+    view_binding_property_delegate =
+            "com.github.kirich1409:viewbindingpropertydelegate-noreflection:${versions.view_binding_property_delegate}"
+
+    material = "com.google.android.material:material:${versions.material}"
+
+    constraintLayout = "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
+
+    junit = "junit:junit:${versions.junit}"
+
+    androidTestJunit = "androidx.test.ext:junit:${versions.androidtTestJunit}"
+
+    espresso = "androidx.test.espresso:espresso-core:${versions.espresso}"
+
+    viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+
+    liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}"
+
+    lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}"
+
+    glide = "com.github.bumptech.glide:glide:${versions.glide}"
+
+    dagger = "com.google.dagger:dagger:${versions.dagger}"
+    daggerAndroidSupport = "com.google.dagger:dagger-android-support:${versions.dagger}"
+    daggerCompiler = "com.google.dagger:dagger-compiler:${versions.dagger}"
+    daggerAndroidSupportProcessor = "com.google.dagger:dagger-android-processor:${versions.dagger}"
+    hilt = "com.google.dagger:hilt-android:${versions.hilt}"
+    hiltCompiler = "com.google.dagger:hilt-compiler:${versions.hilt}"
+
+    retrofit = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    retrofitConverter = "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    okhttp = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
+
+    fragment = "androidx.fragment:fragment-ktx:${versions.fragment}"
+
+    gson = "com.google.code.gson:gson:${versions.gson}"
+
+    adapterDelegateDSL = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl:${versions.adapterDelegate}"
+    adapterDelegateViewBinding = "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:${versions.adapterDelegate}"
+
+    workerKtx = "androidx.work:work-runtime-ktx:${versions.workerKtx}"
+
+    swipeToRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:${versions.swipeToRefresh}"
+
+    guava = "com.google.guava:guava:${versions.guava}"
+    guavaKotlin = "org.jetbrains.kotlinx:kotlinx-coroutines-guava:${versions.guavaKotlin}"
+    callbackToFutureAdapter = "androidx.concurrent:concurrent-futures:${versions.callbackToFutureAdapter}"
+
+    cicerone = "com.github.terrakok:cicerone:${versions.cicerone}"
+
+    splashscreen = "androidx.core:core-splashscreen:${versions.splashscreen}"
+
+    rxjava = "io.reactivex.rxjava3:rxjava:${versions.rxjava}"
+    rxkotlin = "io.reactivex.rxjava3:rxkotlin:${versions.rxkotlin}"
+    rxandroid = "io.reactivex.rxjava3:rxandroid:${versions.rxandroid}"
+    rxjavaadapter = "com.squareup.retrofit2:adapter-rxjava3:${versions.rxjavaadapter}"
+}
