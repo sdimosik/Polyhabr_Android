@@ -1,0 +1,19 @@
+apply from: "$rootProject.projectDir/default_config.gradle"
+
+dependencies {
+
+    implementation navigation.values()
+    implementation coreKtx
+    implementation appCompat
+    implementation material
+    implementation constraintLayout
+    implementation viewModel
+    implementation lifecycle
+    implementation glide
+    implementation cicerone
+    implementation splashscreen
+    implementation retrofit
+    implementation rxjava
+    implementation rxkotlin
+    implementation rxandroid
+}

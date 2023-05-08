@@ -1,3 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Polyhabr</string>
+
+    <string name="bottom_nav_feed">Главная</string>
+    <string name="bottom_nav_create">Создать</string>
+    <string name="bottom_nav_profile">Профиль</string>
+
+    <string name="title_feed">Все публикации</string>
+    <string name="title_create">Новая публикация</string>
+    <string name="title_profile">Профиль</string>
+    
+    <string name="fragment_splash_text">Добро пожаловать</string>
 </resources>
