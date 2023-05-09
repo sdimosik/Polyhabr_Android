@@ -7,8 +7,8 @@
         <item name="colorOnPrimary">@color/green</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/whitest</item>
-        <item name="colorSecondaryVariant">@color/whitest</item>
-        <item name="colorOnSecondary">@color/gray_light</item>
+        <item name="colorSecondaryVariant">@color/gray_light</item>
+        <item name="colorOnSecondary">@color/blackest</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/green_light</item>
         <!-- Customize your theme here. -->

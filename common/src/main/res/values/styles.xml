@@ -14,4 +14,51 @@
         <item name="lastBaselineToBottomHeight">8sp</item>
     </style>
 
+    <style name="Recycler.Default" parent="Widget.AppCompat.ListView">
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="Recycler.Linear" parent="Recycler.Default">
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+    </style>
+
+    <style name="Recycler.StaggeredGrid" parent="Recycler.Default">
+        <item name="layoutManager">androidx.recyclerview.widget.StaggeredGridLayoutManager</item>
+    </style>
+
+    <style name="Recycler.Linear.Horizontal" parent="Recycler.Linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Recycler.Linear.Vertical" parent="Recycler.Linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">?colorSecondaryVariant</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="boxStrokeColor">?colorOnPrimary</item>
+        <item name="hintTextColor">?colorOnPrimary</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.rounded</item>
+    </style>
+
+    <style name="InputEditStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">?colorSecondaryVariant</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

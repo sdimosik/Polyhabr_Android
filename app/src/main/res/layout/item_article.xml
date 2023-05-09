@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clItemArticle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/customborder_gray"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blackest"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="sdimosik" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/tvAuthor"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="29.04.2023" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="4"
+        android:textColor="@color/blackest"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
+        tools:text="Необъяснимо, но вполне логично! Что скрывает в себе квантовая механика? Что скрывает в себе квантовая механика?Что скрывает в себе квантовая механика?" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDiscipline"
+        style="@style/Recycler.Linear.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvType"
+        tools:listitem="@layout/item_micro" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/customborder_green"
+        android:textColor="@color/blackest"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:text="Курсовая работа" />
+
+    <TextView
+        android:id="@+id/tvPreviewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="7"
+        android:textColor="@color/blackest"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvTag"
+        tools:text="Квантовая механикаКвантовая механикаКвантовая механикаКвантовая механика Квантовая механика открывает перед нами новый мир, полный неожиданных свойств и явлений. Она показывает, что частицы могут находиться в неопределенных состояниях и существовать в нескольких местах одновременно. Это называется принципом неопределенности Хайзенберга." />
+
+    <TextView
+        android:id="@+id/tvMoreDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/customborder_blue"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="@string/item_article__continue"
+        android:textColor="@color/blackest"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPreviewText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTag"
+        style="@style/Recycler.Linear.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvDiscipline"
+        tools:listitem="@layout/item_micro" />
+
+    <View
+        android:id="@+id/vLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/gray_light"
+        app:layout_constraintTop_toBottomOf="@+id/tvMoreDetail"
+        tools:layout_editor_absoluteX="-8dp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/acivLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_like_not_pressed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vLine" />
+
+    <TextView
+        android:id="@+id/tvLikeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/acivLike"
+        app:layout_constraintTop_toBottomOf="@+id/vLine"
+        tools:text="24" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/acivView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_eye"
+        app:layout_constraintStart_toEndOf="@+id/tvLikeCount"
+        app:layout_constraintTop_toBottomOf="@+id/vLine" />
+
+    <TextView
+        android:id="@+id/tvViewCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/acivView"
+        app:layout_constraintTop_toBottomOf="@+id/vLine"
+        tools:text="58" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/acivFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_fav_not_pressed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vLine" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

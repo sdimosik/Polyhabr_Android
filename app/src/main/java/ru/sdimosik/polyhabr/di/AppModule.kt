@@ -9,7 +9,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ru.sdimosik.polyhabr.data.repository_impl.NetworkRepository
 import ru.sdimosik.polyhabr.domain.interactor.ArticlesInteractor
+import ru.sdimosik.polyhabr.domain.interactor.CommentInteractor
 import ru.sdimosik.polyhabr.domain.interactor.IArticlesInteractor
+import ru.sdimosik.polyhabr.domain.interactor.ICommentInteractor
 import ru.sdimosik.polyhabr.domain.repository.INetworkRepository
 import javax.inject.Singleton
 
@@ -35,4 +37,9 @@ interface AppModule {
     fun bindArticlesInteractor(
         articlesInteractorImpl: ArticlesInteractor
     ): IArticlesInteractor
+
+    @Binds
+    fun bindCommentInteractor(
+        commentInteractorImpl: CommentInteractor
+    ): ICommentInteractor
 }

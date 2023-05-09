@@ -10,6 +10,26 @@
         android:name="ru.sdimosik.polyhabr.presentaion.main.feed.FeedFragment"
         android:label="@string/title_feed"
         tools:layout="@layout/fragment_feed">
+        <action
+            android:id="@+id/action_fragment_feed_to_fragment_detail_article"
+            app:destination="@id/fragment_detail_article"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out">
+
+            <argument
+                android:name="ArticleArg"
+                app:argType="ru.sdimosik.polyhabr.domain.model.ArticleDomain"
+                app:nullable="false" />
+
+        </action>
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_detail_article"
+        android:name="ru.sdimosik.polyhabr.presentaion.main.article_detail.ArticleDetailFragment"
+        android:label="@string/title_article"
+        tools:layout="@layout/fragment_article_detail"></fragment>
 
 </navigation>
