@@ -12,7 +12,7 @@ ext {
             junit                         : '4.13.2',
             androidtTestJunit             : '1.1.3',
             espresso                      : '3.4.0',
-            navigation                    : '2.4.1',
+            navigation                    : '2.5.1',
             lifecycle                     : '2.4.0',
             glide                         : '4.13.0',
             view_binding_property_delegate: '1.5.6',
@@ -33,7 +33,8 @@ ext {
             rxjava                        : '3.1.6',
             rxkotlin                      : '3.0.1',
             rxandroid                     : '3.0.2',
-            rxjavaadapter                 : '2.9.0'
+            rxjavaadapter                 : '2.9.0',
+            timber                        : '5.0.1'
     ]
 
     navigation = ['navigarion-fragment': "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
@@ -98,4 +99,6 @@ ext {
     rxkotlin = "io.reactivex.rxjava3:rxkotlin:${versions.rxkotlin}"
     rxandroid = "io.reactivex.rxjava3:rxandroid:${versions.rxandroid}"
     rxjavaadapter = "com.squareup.retrofit2:adapter-rxjava3:${versions.rxjavaadapter}"
+
+    timber = "com.jakewharton.timber:timber:${versions.timber}"
 }

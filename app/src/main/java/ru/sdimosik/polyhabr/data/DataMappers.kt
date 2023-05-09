@@ -14,7 +14,7 @@ fun ArticleListResponse.toDomain() =
 
 fun ArticleResponse.toDomain() =
     ArticleDomain(
-        id = id,
+        id = id ?: -1,
         date = date,
         title = title,
         filePdf = filePdf,

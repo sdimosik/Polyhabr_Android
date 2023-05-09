@@ -1,10 +1,16 @@
 package ru.sdimosik.polyhabr.domain.model
 
+import android.os.Parcelable
+import androidx.navigation.NavArgs
+import kotlinx.parcelize.Parcelize
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleType
 import ru.sdimosik.polyhabr.data.network.model.user.UserOtherResponse
+import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.ArticleItem
+import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.MicroUI
 
+@Parcelize
 data class ArticleDomain(
-    val id: Long?,
+    val id: Long,
     val date: String?,
     val filePdf: String? = null,
     val likes: Int?,
@@ -20,4 +26,20 @@ data class ArticleDomain(
     val isSaveToFavourite: Boolean?,
     val pdfId: String?,
     val previewImgId: String?,
+) : Parcelable
+
+fun ArticleDomain.toUI() = ArticleItem(
+    id = id,
+    date = date,
+    user = user,
+    title = title,
+    previewText = previewText,
+    likesCount = likes,
+    viewCount = viewCount,
+    isSaveToFavourite = isSaveToFavourite,
+    type = typeId,
+    listDisciplineName = listDisciplineName?.map { MicroUI(it) },
+    listTag = listTag.map { MicroUI(it) },
+    isLike = null,
+    text = text,
 )

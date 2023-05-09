@@ -75,7 +75,11 @@ dependencies {
     implementation rxandroid
     implementation rxjavaadapter
     debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
-
+    implementation adapterDelegateDSL
+    implementation adapterDelegateViewBinding
+    implementation 'com.github.getActivity:Toaster:12.2'
+    implementation "com.uber.rxdogtag2:rxdogtag:2.0.2"
+    implementation timber
 
     kapt hiltCompiler
 }

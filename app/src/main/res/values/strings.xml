@@ -9,6 +9,16 @@
     <string name="title_feed">Все публикации</string>
     <string name="title_create">Новая публикация</string>
     <string name="title_profile">Профиль</string>
-    
+    <string name="title_article">Публикация</string>
+
     <string name="fragment_splash_text">Добро пожаловать</string>
+
+    <string name="item_article__continue">Подробнее</string>
+    <string name="fragment_article_detail__comment_tittle">Комментарии</string>
+    <string name="fragment_article_detail__blank">Комментариев нет, но вы можете стать первым!</string>
+    <string name="fragment_article_detail__comment_create_tittle">Ваш комментарий</string>
+    <string name="fragment_article_detail__comment_create_btn">Отправить</string>
+    <string name="fragment_article_detail__comment_create_text_hint">Ваш комментарий</string>
+
+
 </resources>
