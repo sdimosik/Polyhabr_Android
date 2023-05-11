@@ -91,6 +91,7 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
         tvDate.text = article.date
         tvAuthor.text = article.user?.login
         tvViewCount.text = article.viewCount.toString()
+        viewModel.likeCountSave(article.likesCount)
         tvLikeCount.text = article.likesCount.toString()
 
         acivLike.setImageResource(
@@ -152,6 +153,9 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
                     R.drawable.ic_fav_not_pressed
                 }
             )
+        }
+        viewModel.likeCount.observe(viewLifecycleOwner) { count ->
+            count?.let { tvLikeCount.text = it.toString() }
         }
     }
 }

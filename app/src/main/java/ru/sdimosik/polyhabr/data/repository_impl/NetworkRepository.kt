@@ -4,11 +4,14 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import retrofit2.Response
 import ru.sdimosik.polyhabr.common.utils.NetworkUtils
 import ru.sdimosik.polyhabr.data.network.NetworkApi
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentGetParam
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
 import ru.sdimosik.polyhabr.data.network.model.comment.toDomain
+import ru.sdimosik.polyhabr.data.network.model.user.LoginRequest
+import ru.sdimosik.polyhabr.data.network.model.user.LoginResponse
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 import ru.sdimosik.polyhabr.data.toDomain
@@ -77,6 +80,13 @@ class NetworkRepository @Inject constructor(
                     Completable.error(Throwable("Ошибка при создании комментария"))
                 }
             }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun login(loginRequest: LoginRequest): Single<LoginResponse> {
+        return networkApi.signin(loginRequest)
+            .map(NetworkUtils::unwrap)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

@@ -19,6 +19,11 @@
     <string name="fragment_article_detail__comment_create_tittle">Ваш комментарий</string>
     <string name="fragment_article_detail__comment_create_btn">Отправить</string>
     <string name="fragment_article_detail__comment_create_text_hint">Ваш комментарий</string>
+    <string name="fragment_profile_user_name_hint">Имя пользователя</string>
+    <string name="fragment_profile_password_user_hint">Пароль</string>
+    <string name="fragment_profile_forgot_pass">Забыли пароль?</string>
+    <string name="fragment_profile_login">Вход</string>
+    <string name="fragment_profile_register">Регистрация</string>
 
 
 </resources>

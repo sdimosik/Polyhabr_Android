@@ -24,6 +24,7 @@ class ArticleDetailViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     private val _comments = MutableLiveData<List<CommentItem>>(
+        // TODO
         mutableListOf(
             CommentItem(
                 id = 1,
@@ -62,6 +63,9 @@ class ArticleDetailViewModel @Inject constructor(
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> = _isFavorite
 
+    private val _likeCount = MutableLiveData<Int?>()
+    val likeCount: LiveData<Int?> = _likeCount
+
     private val _error = MutableSharedFlow<String>(
         extraBufferCapacity = 1,
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
@@ -71,6 +75,10 @@ class ArticleDetailViewModel @Inject constructor(
 
     private var page = 0
     val pageSize = 10
+
+    fun likeCountSave(viewCount: Int?) {
+        _likeCount.postValue(viewCount)
+    }
 
     fun loadComments(id: Long) {
         val param = CommentGetParam(
@@ -114,10 +122,16 @@ class ArticleDetailViewModel @Inject constructor(
         articlesInteractor.changeLike(id, goLike)
             .subscribeBy(
                 onComplete = {
-                    if (goLike) {
-                        _isLiked.postValue(true)
-                    } else {
-                        _isLiked.postValue(false)
+                    _isLiked.postValue(goLike)
+                    val oldCount = _likeCount.value
+                    oldCount?.let {
+                        _likeCount.postValue(
+                            if (goLike) {
+                                it + 1
+                            } else {
+                                it - 1
+                            }
+                        )
                     }
                 },
                 onError = {

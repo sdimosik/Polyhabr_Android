@@ -26,6 +26,7 @@ data class ArticleDomain(
     val isSaveToFavourite: Boolean?,
     val pdfId: String?,
     val previewImgId: String?,
+    val isLiked: Boolean?
 ) : Parcelable
 
 fun ArticleDomain.toUI() = ArticleItem(
@@ -40,6 +41,6 @@ fun ArticleDomain.toUI() = ArticleItem(
     type = typeId,
     listDisciplineName = listDisciplineName?.map { MicroUI(it) },
     listTag = listTag.map { MicroUI(it) },
-    isLike = null,
+    isLike = isLiked,
     text = text,
 )

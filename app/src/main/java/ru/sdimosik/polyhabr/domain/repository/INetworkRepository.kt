@@ -2,7 +2,10 @@ package ru.sdimosik.polyhabr.domain.repository
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
+import retrofit2.Response
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentGetParam
+import ru.sdimosik.polyhabr.data.network.model.user.LoginRequest
+import ru.sdimosik.polyhabr.data.network.model.user.LoginResponse
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.domain.model.ArticleDomain
 import ru.sdimosik.polyhabr.domain.model.ArticleListDomain
@@ -24,4 +27,6 @@ interface INetworkRepository {
     fun getCommentsByArticleId(commentGetParam: CommentGetParam): Single<CommentListDomain>
 
     fun createComment(id: Long, text: String): Completable
+
+    fun login(loginRequest: LoginRequest): Single<LoginResponse>
 }
