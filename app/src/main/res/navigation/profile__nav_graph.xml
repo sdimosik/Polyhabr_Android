@@ -10,6 +10,36 @@
         android:name="ru.sdimosik.polyhabr.presentaion.main.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_fragment_profile_to_fragment_reg"
+            app:destination="@id/fragment_reg"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+        <action
+            android:id="@+id/action_fragment_profile_to_fragment_my_profile"
+            app:destination="@id/fragment_my_profile"
+            app:popUpTo="@id/fragment_profile"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_reg"
+        android:name="ru.sdimosik.polyhabr.presentaion.main.profile.reg.RegFragment"
+        android:label="@string/title_reg"
+        tools:layout="@layout/fragment_registration">
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_my_profile"
+        android:name="ru.sdimosik.polyhabr.presentaion.main.profile.my.MyProfileFragment"
+        android:label="@string/title_my_profile"
+        tools:layout="@layout/fragment_my_profile">
     </fragment>
 
 </navigation>

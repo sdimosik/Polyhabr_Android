@@ -12,6 +12,7 @@ import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
 import ru.sdimosik.polyhabr.data.network.model.comment.toDomain
 import ru.sdimosik.polyhabr.data.network.model.user.LoginRequest
 import ru.sdimosik.polyhabr.data.network.model.user.LoginResponse
+import ru.sdimosik.polyhabr.data.network.model.user.NewUser
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 import ru.sdimosik.polyhabr.data.toDomain
@@ -87,6 +88,24 @@ class NetworkRepository @Inject constructor(
     override fun login(loginRequest: LoginRequest): Single<LoginResponse> {
         return networkApi.signin(loginRequest)
             .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun register(newUser: NewUser): Completable {
+        return networkApi.signup(newUser)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun checkFreeLogin(login: String): Completable {
+        return networkApi.checkFreeLogin(login)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun checkFreeEmail(email: String): Completable {
+        return networkApi.checkFreeEmail(email)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

@@ -1,5 +1,6 @@
 package ru.sdimosik.polyhabr.presentaion.main.profile
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
@@ -8,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -49,7 +51,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             viewModel.goLogin()
         }
         btnRegister.setOnClickListener {
-
+            findNavController().navigate(R.id.action_fragment_profile_to_fragment_reg)
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -58,5 +60,33 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
                 }
             }
         }
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                btnLogin.showLoading()
+            } else {
+                btnLogin.hideLoading()
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.goMyProfile.collectLatest {
+                    if (it) {
+                        findNavController().navigate(R.id.action_fragment_profile_to_fragment_my_profile)
+                    } else {
+                        showAuthScreen()
+                    }
+                }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkAuth()
+    }
+
+    private fun FragmentProfileBinding.showAuthScreen() {
+        clLoadingProfile.visibility = View.GONE
+        clAuth.visibility = View.VISIBLE
     }
 }

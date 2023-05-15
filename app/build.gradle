@@ -80,6 +80,8 @@ dependencies {
     implementation 'com.github.getActivity:Toaster:12.2'
     implementation "com.uber.rxdogtag2:rxdogtag:2.0.2"
     implementation timber
+    implementation loadingbutton
+    implementation swipeToRefresh
 
     kapt hiltCompiler
 }

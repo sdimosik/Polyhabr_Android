@@ -10,6 +10,8 @@
     <string name="title_create">Новая публикация</string>
     <string name="title_profile">Профиль</string>
     <string name="title_article">Публикация</string>
+    <string name="title_reg">Регистрация</string>
+    <string name="title_my_profile">Мой профиль</string>
 
     <string name="fragment_splash_text">Добро пожаловать</string>
 
@@ -24,6 +26,8 @@
     <string name="fragment_profile_forgot_pass">Забыли пароль?</string>
     <string name="fragment_profile_login">Вход</string>
     <string name="fragment_profile_register">Регистрация</string>
+
+    <string name="wait">Подождите</string>
 
 
 </resources>

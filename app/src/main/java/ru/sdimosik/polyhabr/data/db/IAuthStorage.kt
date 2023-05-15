@@ -6,4 +6,6 @@ import ru.sdimosik.polyhabr.data.db.model.AuthTokenEntity
 interface IAuthStorage {
     fun saveToken(token: AuthTokenEntity): Completable
     fun getToken(): AuthTokenEntity?
+
+    fun deleteToken(): Completable
 }

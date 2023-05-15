@@ -9,8 +9,7 @@ import ru.sdimosik.polyhabr.data.network.model.article.ArticleResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentCreateResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
-import ru.sdimosik.polyhabr.data.network.model.user.LoginRequest
-import ru.sdimosik.polyhabr.data.network.model.user.LoginResponse
+import ru.sdimosik.polyhabr.data.network.model.user.*
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 
@@ -60,8 +59,14 @@ interface NetworkApi {
     fun createComment(@Body param: CommentRequest): Single<Response<CommentCreateResponse>>
 
     @POST("api/auth/signupmob")
-    fun signup()
+    fun signup(@Body newUser: NewUser): Completable
 
     @POST("api/auth/signin")
     fun signin(@Body loginRequest: LoginRequest): Single<Response<LoginResponse>>
+
+    @GET("api/auth/checkFreeLogin")
+    fun checkFreeLogin(login: String): Completable
+
+    @GET("api/auth/checkFreeEmail")
+    fun checkFreeEmail(email: String): Completable
 }

@@ -47,4 +47,12 @@ class AuthStorage @Inject constructor(
         return context.getSharedPreferences(APP_PREFERENCES_NAME, Context.MODE_PRIVATE)
             .getParcelable(STORAGE_TOKEN, null)
     }
+
+    override fun deleteToken(): Completable {
+        return prefSubject
+            .firstOrError()
+            .editSharedPreferences {
+                clear()
+            }
+    }
 }

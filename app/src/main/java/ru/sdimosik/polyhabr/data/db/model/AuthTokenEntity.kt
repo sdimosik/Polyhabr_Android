@@ -5,7 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class AuthTokenEntity(
-    var accessToken: String?,
+    var accessToken: String,
     var username: String?,
-    val isFirst: Boolean
+    val isFirst: Boolean,
+    val refreshToken: String
 ) : Parcelable

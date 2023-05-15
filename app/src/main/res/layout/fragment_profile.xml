@@ -9,14 +9,15 @@
         android:id="@+id/clAuth"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="30dp">
+        android:paddingHorizontal="30dp"
+        android:visibility="invisible">
 
 
         <TextView
             android:id="@+id/tvNameUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             android:text="@string/fragment_profile_user_name_hint"
             android:textColor="?colorOnSecondary"
             android:textSize="14sp"
@@ -85,27 +86,58 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
             android:foreground="?attr/selectableItemBackground"
             android:paddingVertical="11dp"
             android:stateListAnimator="@null"
             android:text="@string/fragment_profile_register"
             android:textColor="?colorOnPrimary"
-            app:backgroundTint="?colorPrimary"
-            app:layout_constraintBottom_toTopOf="@id/btnLogin"
-            app:strokeColor="?colorOnPrimary" />
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotPass"
+            app:lb_buttonColor="?colorPrimary"
+            app:strokeColor="?colorOnPrimary"
+            tools:layout_editor_absoluteX="30dp" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.kusu.loadingbutton.LoadingButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:foreground="?attr/selectableItemBackground"
-            android:paddingVertical="11dp"
-            android:stateListAnimator="@null"
+            android:layout_marginTop="4dp"
             android:text="@string/fragment_profile_login"
             android:textColor="?colorPrimary"
-            app:backgroundTint="?colorOnPrimary"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+            app:lb_buttonColor="?colorOnPrimary"
+            app:lb_isShadowEnable="false"
+            app:lb_loaderColor="?colorPrimary"
+            tools:layout_editor_absoluteX="30dp" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clLoadingProfile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/fragment_profile__text__title"
+            style="@style/LargeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wait"
+            android:textColor="@color/green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/fragment_profile__progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_profile__text__title" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

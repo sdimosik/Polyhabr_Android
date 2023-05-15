@@ -16,6 +16,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.sdimosik.polyhabr.data.db.AuthStorage
 import ru.sdimosik.polyhabr.data.db.IAuthStorage
 import ru.sdimosik.polyhabr.data.network.AuthTokenHeaderInteractor
+import ru.sdimosik.polyhabr.data.network.NetworkApi
+import ru.sdimosik.polyhabr.data.network.RefreshApi
+import ru.sdimosik.polyhabr.data.network.RefreshAuthenticator
 import javax.inject.Singleton
 
 @Module
@@ -45,10 +48,37 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(
+    fun provideAuthenticator(
+        authStorage: IAuthStorage,
+        refreshApi: RefreshApi
+    ): RefreshAuthenticator {
+        return RefreshAuthenticator(authStorage, refreshApi)
+    }
+
+    @Singleton
+    @Provides
+    @BaseOkHttpClient
+    fun provideBaseOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
         authTokenHeaderInteractor: AuthTokenHeaderInteractor,
-        context: Context
+        context: Context,
+        refreshAuthenticator: RefreshAuthenticator
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .authenticator(refreshAuthenticator)
+            .addInterceptor(loggingInterceptor)
+            .addInterceptor(ChuckerInterceptor(context))
+            .addInterceptor(authTokenHeaderInteractor)
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    @RefreshTokenOkHttpClient
+    fun provideRefreshTokenOkHttpClientt(
+        loggingInterceptor: HttpLoggingInterceptor,
+        authTokenHeaderInteractor: AuthTokenHeaderInteractor,
+        context: Context,
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
@@ -59,13 +89,25 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideNewsApiService(okHttpClient: OkHttpClient): ru.sdimosik.polyhabr.data.network.NetworkApi {
+    fun provideNetworkApiService(@BaseOkHttpClient okHttpClient: OkHttpClient): NetworkApi {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
-            .create(ru.sdimosik.polyhabr.data.network.NetworkApi::class.java)
+            .create(NetworkApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideRefreshApiService(@RefreshTokenOkHttpClient okHttpClient: OkHttpClient): RefreshApi {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .client(okHttpClient)
+            .build()
+            .create(RefreshApi::class.java)
     }
 }
