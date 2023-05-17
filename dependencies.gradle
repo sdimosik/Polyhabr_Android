@@ -34,7 +34,9 @@ ext {
             rxkotlin                      : '3.0.1',
             rxandroid                     : '3.0.2',
             rxjavaadapter                 : '2.9.0',
-            timber                        : '5.0.1'
+            timber                        : '5.0.1',
+            loadingbutton                 : '1.7',
+            android_crypto                : '1.0.0'
     ]
 
     navigation = ['navigarion-fragment': "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
@@ -101,4 +103,8 @@ ext {
     rxjavaadapter = "com.squareup.retrofit2:adapter-rxjava3:${versions.rxjavaadapter}"
 
     timber = "com.jakewharton.timber:timber:${versions.timber}"
+
+    loadingbutton = "com.github.koushikcse:LoadingButton:${versions.loadingbutton}"
+
+    android_crypto = "androidx.security:security-crypto:${versions.android_crypto}"
 }

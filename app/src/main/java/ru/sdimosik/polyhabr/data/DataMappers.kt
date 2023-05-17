@@ -30,4 +30,5 @@ fun ArticleResponse.toDomain() =
         isSaveToFavourite = isSaveToFavourite,
         pdfId = pdfId,
         previewImgId = previewImgId,
+        isLiked = isLiked
     )

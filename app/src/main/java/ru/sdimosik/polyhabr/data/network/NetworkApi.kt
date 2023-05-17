@@ -9,6 +9,7 @@ import ru.sdimosik.polyhabr.data.network.model.article.ArticleResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentCreateResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
+import ru.sdimosik.polyhabr.data.network.model.user.*
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 
@@ -20,6 +21,25 @@ interface NetworkApi {
         @Query("offset") offset: Int,
         @Query("size") size: Int,
         @Body sorting: SortArticleRequest = SortArticleRequest(),
+    ): Single<Response<ArticleListResponse>>
+
+    @GET("articles/byUser")
+    fun getArticlesByUser(
+        @Query("id") id: Long,
+        @Query("offset") offset: Int,
+        @Query("size") size: Int,
+    ): Single<Response<ArticleListResponse>>
+
+    @GET("articles/my")
+    fun getMyArticles(
+        @Query("offset") offset: Int,
+        @Query("size") size: Int,
+    ): Single<Response<ArticleListResponse>>
+
+    @GET("articles/getFavArticles")
+    fun getFavouriteArticle(
+        @Query("offset") offset: Int,
+        @Query("size") size: Int,
     ): Single<Response<ArticleListResponse>>
 
     @POST("articles/add_like")
@@ -56,4 +76,25 @@ interface NetworkApi {
 
     @POST("comment/create")
     fun createComment(@Body param: CommentRequest): Single<Response<CommentCreateResponse>>
+
+    @POST("api/auth/signupmob")
+    fun signup(@Body newUser: NewUser): Completable
+
+    @POST("api/auth/signin")
+    fun signin(@Body loginRequest: LoginRequest): Single<Response<LoginResponse>>
+
+    @GET("api/auth/checkFreeLogin")
+    fun checkFreeLogin(@Query("login") login: String): Completable
+
+    @GET("api/auth/checkFreeEmail")
+    fun checkFreeEmail(@Query("email") email: String): Completable
+
+    @GET("api/auth/verify")
+    fun verifyUser(@Query("code") code: String): Completable
+
+    @PUT("users/update")
+    fun updateUser(@Body userUpdateRequest: UserUpdateRequest): Single<Response<UserUpdateResponse>>
+
+    @GET("users/me")
+    fun meUser(): Single<Response<UserMeResponse>>
 }

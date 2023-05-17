@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_left_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_setting"
+            android:textColor="?colorOnSecondary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/svContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintTop_toBottomOf="@+id/clTopBar"
+        tools:layout_editor_absoluteX="30dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clInside"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvFirstNameUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fragment_profile_firstname_user_hint"
+                android:textColor="?colorOnSecondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFirstNameUser"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvFirstNameUser">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietFirstNameUser"
+                    style="@style/InputEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/black_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tvLastNameUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fragment_profile_lastname_user_hint"
+                android:textColor="?colorOnSecondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tilFirstNameUser" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLastNameUser"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvLastNameUser">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietLastNameUser"
+                    style="@style/InputEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/black_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tvEmailUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fragment_profile_email_user_hint"
+                android:textColor="?colorOnSecondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tilLastNameUser" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmailUser"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvEmailUser">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietEmailsUser"
+                    style="@style/InputEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:textCursorDrawable="@drawable/black_cursor" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvOldPassUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fragment_setting_old_pass"
+                android:textColor="?colorOnSecondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tilEmailUser" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOldPassUser"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvOldPassUser">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietOldPassUser"
+                    style="@style/InputEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/black_cursor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvNewPassUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fragment_setting_new_pass"
+                android:textColor="?colorOnSecondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tilOldPassUser" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNewPassUser"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvNewPassUser">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietNewPassUser"
+                    style="@style/InputEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/black_cursor" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvRetryPassUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fragment_setting_retry_pass"
+                android:textColor="?colorOnSecondary"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/tilNewPassUser" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRetryPassUser"
+                style="@style/InputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/tvRetryPassUser">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietRetryPassUser"
+                    style="@style/InputEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:textCursorDrawable="@drawable/black_cursor" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.kusu.loadingbutton.LoadingButton
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/fragment_setting_save_btn"
+        android:textColor="?colorPrimary"
+        app:layout_constraintBottom_toTopOf="@id/vLine"
+        app:lb_buttonColor="?colorOnPrimary"
+        app:lb_isShadowEnable="false"
+        app:lb_loaderColor="?colorPrimary" />
+
+    <View
+        android:id="@+id/vLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/gray_light"
+        app:layout_constraintBottom_toTopOf="@id/btnExit" />
+
+    <com.kusu.loadingbutton.LoadingButton
+        android:id="@+id/btnExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/fragment_setting_exit_btn"
+        android:textColor="?colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lb_buttonColor="@color/red"
+        app:lb_isShadowEnable="false"
+        app:lb_loaderColor="?colorPrimary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,11 +4,13 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import retrofit2.Response
 import ru.sdimosik.polyhabr.common.utils.NetworkUtils
 import ru.sdimosik.polyhabr.data.network.NetworkApi
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentGetParam
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
 import ru.sdimosik.polyhabr.data.network.model.comment.toDomain
+import ru.sdimosik.polyhabr.data.network.model.user.*
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 import ru.sdimosik.polyhabr.data.toDomain
@@ -27,6 +29,30 @@ class NetworkRepository @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .map(NetworkUtils::unwrap)
             .map { it.toDomain() }
+
+    override fun getArticlesByUser(id: Long, offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkApi.getArticlesByUser(id = id, offset = offset, size = size)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(NetworkUtils::unwrap)
+            .map { it.toDomain() }
+    }
+
+    override fun getMyArticle(offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkApi.getMyArticles(offset = offset, size = size)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(NetworkUtils::unwrap)
+            .map { it.toDomain() }
+    }
+
+    override fun getFavouriteArticle(offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkApi.getFavouriteArticle(offset = offset, size = size)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(NetworkUtils::unwrap)
+            .map { it.toDomain() }
+    }
 
     override fun addLike(id: Long): Completable =
         networkApi.addLike(id)
@@ -77,6 +103,58 @@ class NetworkRepository @Inject constructor(
                     Completable.error(Throwable("Ошибка при создании комментария"))
                 }
             }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun login(loginRequest: LoginRequest): Single<LoginResponse> {
+        return networkApi.signin(loginRequest)
+            .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun register(newUser: NewUser): Completable {
+        return networkApi.signup(newUser)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun checkFreeLogin(login: String): Completable {
+        return networkApi.checkFreeLogin(login)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun checkFreeEmail(email: String): Completable {
+        return networkApi.checkFreeEmail(email)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun verifyUser(code: String): Completable {
+        return networkApi.verifyUser(code)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun updateUser(userUpdateRequest: UserUpdateRequest): Completable {
+        return networkApi.updateUser(userUpdateRequest)
+            .map(NetworkUtils::unwrap)
+            .flatMapCompletable {
+                if (it.isSuccess) {
+                    Completable.complete()
+                } else {
+                    Completable.error(Throwable(it.message))
+                }
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun meUser(): Single<UserMeResponse> {
+        return networkApi.meUser()
+            .map(NetworkUtils::unwrap)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

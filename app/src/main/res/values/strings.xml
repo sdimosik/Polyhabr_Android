@@ -10,6 +10,9 @@
     <string name="title_create">Новая публикация</string>
     <string name="title_profile">Профиль</string>
     <string name="title_article">Публикация</string>
+    <string name="title_reg">Регистрация</string>
+    <string name="title_my_profile">Мой профиль</string>
+    <string name="title_confirm_reg">Подтверждение регистрации</string>
 
     <string name="fragment_splash_text">Добро пожаловать</string>
 
@@ -19,6 +22,31 @@
     <string name="fragment_article_detail__comment_create_tittle">Ваш комментарий</string>
     <string name="fragment_article_detail__comment_create_btn">Отправить</string>
     <string name="fragment_article_detail__comment_create_text_hint">Ваш комментарий</string>
+    <string name="fragment_profile_user_name_hint">Имя пользователя</string>
+    <string name="fragment_profile_login_name_hint">Логин</string>
+    <string name="fragment_profile_password_user_hint">Пароль</string>
+    <string name="fragment_profile_firstname_user_hint">Имя</string>
+    <string name="fragment_profile_lastname_user_hint">Фамилия</string>
+    <string name="fragment_profile_email_user_hint">Почта</string>
+    <string name="fragment_profile_forgot_pass">Забыли пароль?</string>
+    <string name="fragment_profile_login">Вход</string>
+    <string name="fragment_profile_register">Регистрация</string>
+    <string name="fragment_profile_confirm_register">Подтверждение регистрации</string>
+    <string name="fragment_profile_verify_code_hint">Код подтверждения</string>
+    <string name="fragment_profile_go_register">Зарегестрироваться</string>
+    <string name="fragment_profile_verify_reg_btn">Подтвердить</string>
+    <string name="fragment_setting_save_btn">Сохранить изменения</string>
+    <string name="fragment_setting_old_pass">Старый пароль</string>
+    <string name="fragment_setting_new_pass">Новый пароль</string>
+    <string name="fragment_setting_retry_pass">Подтверждение пароля</string>
+    <string name="fragment_setting_exit_btn">Выйти из аккаунта</string>
+
+
+    <string name="fragment_profile_tab_my_articles">Публикации</string>
+    <string name="fragment_profile_tab_fav_articles">Закладки</string>
+    <string name="fragment_setting">Настройки</string>
+
+    <string name="wait">Подождите</string>
 
 
 </resources>

@@ -30,6 +30,6 @@
         android:id="@+id/fragment_detail_article"
         android:name="ru.sdimosik.polyhabr.presentaion.main.article_detail.ArticleDetailFragment"
         android:label="@string/title_article"
-        tools:layout="@layout/fragment_article_detail"></fragment>
+        tools:layout="@layout/fragment_article_detail" />
 
 </navigation>

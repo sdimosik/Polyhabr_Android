@@ -94,5 +94,11 @@ class FeedFragment : BaseFragment(R.layout.fragment_feed) {
                 }
             }
         }
+        swipeContainer.setOnRefreshListener {
+            viewModel.fullRefresh()
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            swipeContainer.isRefreshing = it
+        }
     }
 }

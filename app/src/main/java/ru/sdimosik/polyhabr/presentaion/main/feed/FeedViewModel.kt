@@ -50,6 +50,26 @@ class FeedViewModel @Inject constructor(
         loadArticles()
     }
 
+    fun fullRefresh() {
+        page = 0
+        val param = ArticlesParam(
+            offset = page,
+            size = pageSize,
+        )
+        articlesInteractor.getArticles(param)
+            .loading(_isLoading)
+            .subscribeBy(
+                onSuccess = {
+                    val dop = it.contents?.map { article -> article.toUI() } ?: mutableListOf()
+                    _articles.postValue(dop)
+                    page++
+                },
+                onError = {
+                    _error.tryEmit(ErrorHelper.getErrorMessage(it))
+                }
+            )
+            .addTo(disposables)
+    }
     fun loadArticles() {
         val param = ArticlesParam(
             offset = page,
