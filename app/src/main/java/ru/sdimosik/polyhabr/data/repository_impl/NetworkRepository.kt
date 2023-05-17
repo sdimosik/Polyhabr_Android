@@ -10,9 +10,7 @@ import ru.sdimosik.polyhabr.data.network.NetworkApi
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentGetParam
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
 import ru.sdimosik.polyhabr.data.network.model.comment.toDomain
-import ru.sdimosik.polyhabr.data.network.model.user.LoginRequest
-import ru.sdimosik.polyhabr.data.network.model.user.LoginResponse
-import ru.sdimosik.polyhabr.data.network.model.user.NewUser
+import ru.sdimosik.polyhabr.data.network.model.user.*
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 import ru.sdimosik.polyhabr.data.toDomain
@@ -31,6 +29,30 @@ class NetworkRepository @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .map(NetworkUtils::unwrap)
             .map { it.toDomain() }
+
+    override fun getArticlesByUser(id: Long, offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkApi.getArticlesByUser(id = id, offset = offset, size = size)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(NetworkUtils::unwrap)
+            .map { it.toDomain() }
+    }
+
+    override fun getMyArticle(offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkApi.getMyArticles(offset = offset, size = size)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(NetworkUtils::unwrap)
+            .map { it.toDomain() }
+    }
+
+    override fun getFavouriteArticle(offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkApi.getFavouriteArticle(offset = offset, size = size)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map(NetworkUtils::unwrap)
+            .map { it.toDomain() }
+    }
 
     override fun addLike(id: Long): Completable =
         networkApi.addLike(id)
@@ -106,6 +128,33 @@ class NetworkRepository @Inject constructor(
 
     override fun checkFreeEmail(email: String): Completable {
         return networkApi.checkFreeEmail(email)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun verifyUser(code: String): Completable {
+        return networkApi.verifyUser(code)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun updateUser(userUpdateRequest: UserUpdateRequest): Completable {
+        return networkApi.updateUser(userUpdateRequest)
+            .map(NetworkUtils::unwrap)
+            .flatMapCompletable {
+                if (it.isSuccess) {
+                    Completable.complete()
+                } else {
+                    Completable.error(Throwable(it.message))
+                }
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun meUser(): Single<UserMeResponse> {
+        return networkApi.meUser()
+            .map(NetworkUtils::unwrap)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

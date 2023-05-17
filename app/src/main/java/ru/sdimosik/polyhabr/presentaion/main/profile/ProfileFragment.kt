@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import ru.sdimosik.polyhabr.R
 import ru.sdimosik.polyhabr.common.ui.BaseFragment
 import ru.sdimosik.polyhabr.databinding.FragmentProfileBinding
+import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.ArticleItem
 
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
@@ -27,6 +28,11 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
 
     private val viewModel by viewModels<ProfileViewModel>()
+
+
+    private val exit by lazy {
+        arguments?.getBoolean("exit", false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +56,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         btnLogin.setOnClickListener {
             viewModel.goLogin()
         }
-        btnRegister.setOnClickListener {
+        btnGoRegister.setOnClickListener {
             findNavController().navigate(R.id.action_fragment_profile_to_fragment_reg)
         }
         viewLifecycleOwner.lifecycleScope.launch {
@@ -82,7 +88,11 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
     override fun onResume() {
         super.onResume()
-        viewModel.checkAuth()
+        if (exit == true) {
+            binding.showAuthScreen()
+        } else {
+            viewModel.checkAuth()
+        }
     }
 
     private fun FragmentProfileBinding.showAuthScreen() {

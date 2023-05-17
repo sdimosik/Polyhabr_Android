@@ -36,7 +36,7 @@ class AuthInteractor @Inject constructor(
 
     override fun login(loginRequest: LoginRequest): Completable {
         return networkRepository.login(loginRequest)
-            .flatMapCompletable { authStorage.saveToken(it.toEntity()) }
+            .flatMapCompletable { authStorage.saveToken(it.toEntity(loginRequest.password)) }
     }
 
     override fun register(newUser: NewUser): Completable {
@@ -56,6 +56,18 @@ class AuthInteractor @Inject constructor(
             .map(NetworkUtils::unwrap)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun verifyUser(code: String): Completable {
+        return networkRepository.verifyUser(code)
+    }
+
+    override fun updateUser(userUpdateRequest: UserUpdateRequest): Completable {
+        return networkRepository.updateUser(userUpdateRequest)
+    }
+
+    override fun meUser(): Single<UserMeResponse> {
+        return networkRepository.meUser()
     }
 }
 
@@ -78,4 +90,11 @@ interface IAuthInteractor {
     fun checkFreeEmail(email: String): Completable
 
     fun refresh(refreshRequest: TokenRefreshRequest): Single<TokenRefreshResponse>
+
+    fun verifyUser(code: String): Completable
+
+    fun updateUser(userUpdateRequest: UserUpdateRequest): Completable
+
+    fun meUser(): Single<UserMeResponse>
+
 }

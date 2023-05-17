@@ -15,10 +15,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.sdimosik.polyhabr.common.ui.BaseViewModel
 import ru.sdimosik.polyhabr.data.db.model.AuthTokenEntity
+import ru.sdimosik.polyhabr.data.network.model.user.LoginRequest
 import ru.sdimosik.polyhabr.data.network.model.user.TokenRefreshRequest
 import ru.sdimosik.polyhabr.domain.interactor.IAuthInteractor
 import javax.inject.Inject
 
+@Suppress("UNREACHABLE_CODE")
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     private val authInteractor: IAuthInteractor
@@ -36,20 +38,16 @@ class SplashViewModel @Inject constructor(
 
     fun refreshToken() {
         authInteractor.getSavedToken()
-            .flatMap {
-                val refreshRequest = TokenRefreshRequest(refreshToken = it.get().refreshToken)
-                Single.just(it)
-                    .zipWith(authInteractor.refresh(refreshRequest))
-            }
             .flatMapCompletable {
-                val oldToken = it.first
-                val newToken = it.second
-                authInteractor.storeToken(
-                    oldToken.get().copy(
-                        accessToken = newToken.accessToken,
-                        refreshToken = newToken.refreshToken
+                if (it.isPresent) {
+                    val loginRequest = LoginRequest(
+                        username = it.get().username,
+                        password = it.get().password
                     )
-                )
+                    authInteractor.login(loginRequest)
+                } else {
+                    throw error("")
+                }
             }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(

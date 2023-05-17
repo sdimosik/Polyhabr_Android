@@ -82,6 +82,7 @@ dependencies {
     implementation timber
     implementation loadingbutton
     implementation swipeToRefresh
+    implementation android_crypto
 
     kapt hiltCompiler
 }

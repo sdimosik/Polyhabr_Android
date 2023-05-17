@@ -14,6 +14,18 @@ class ArticlesInteractor @Inject constructor(
     override fun getArticles(articlesParam: ArticlesParam): Single<ArticleListDomain> =
         networkRepository.getArticles(articlesParam)
 
+    override fun getArticlesByUser(id: Long, offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkRepository.getArticlesByUser(id = id, offset = offset, size = size)
+    }
+
+    override fun getFavouriteArticle(offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkRepository.getFavouriteArticle(offset = offset, size = size)
+    }
+
+    override fun getMyArticle(offset: Int, size: Int): Single<ArticleListDomain> {
+        return networkRepository.getMyArticle(offset = offset, size = size)
+    }
+
     override fun changeLike(id: Long, addLike: Boolean): Completable {
         return if (addLike) {
             networkRepository.addLike(id)
@@ -37,6 +49,12 @@ class ArticlesInteractor @Inject constructor(
 
 interface IArticlesInteractor {
     fun getArticles(articlesParam: ArticlesParam): Single<ArticleListDomain>
+
+    fun getArticlesByUser(id: Long, offset: Int, size: Int): Single<ArticleListDomain>
+
+    fun getFavouriteArticle(offset: Int, size: Int): Single<ArticleListDomain>
+
+    fun getMyArticle(offset: Int, size: Int): Single<ArticleListDomain>
 
     fun changeLike(id: Long, addLike: Boolean): Completable
 

@@ -82,7 +82,7 @@
             app:layout_constraintTop_toBottomOf="@id/tilPassUser" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnRegister"
+            android:id="@+id/btnGoRegister"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             android:layout_marginTop="4dp"
             android:text="@string/fragment_profile_login"
             android:textColor="?colorPrimary"
-            app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+            app:layout_constraintTop_toBottomOf="@+id/btnGoRegister"
             app:lb_buttonColor="?colorOnPrimary"
             app:lb_isShadowEnable="false"
             app:lb_loaderColor="?colorPrimary"

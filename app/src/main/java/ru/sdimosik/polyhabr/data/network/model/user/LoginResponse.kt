@@ -11,12 +11,16 @@ data class LoginResponse(
     @SerializedName("isFirst")
     val isFirst: Boolean,
     @SerializedName("refreshToken")
-    val refreshToken: String?
+    val refreshToken: String?,
+    @SerializedName("idUser")
+    val idUser: Long
 )
 
-fun LoginResponse.toEntity() = AuthTokenEntity(
+fun LoginResponse.toEntity(password: String) = AuthTokenEntity(
     accessToken = accessToken!!,
-    username = username,
+    username = username!!,
     isFirst = isFirst,
-    refreshToken = refreshToken!!
+    refreshToken = refreshToken!!,
+    idUser = idUser,
+    password = password
 )

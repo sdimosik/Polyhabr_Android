@@ -1,8 +1,11 @@
 package ru.sdimosik.polyhabr.data.network.model.user
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import ru.sdimosik.polyhabr.utils.RegexUtils
 
+@Parcelize
 data class NewUser(
     @SerializedName("username")
     var username: String,
@@ -14,7 +17,7 @@ data class NewUser(
     var email: String,
     @SerializedName("password")
     var password: String
-)
+) : Parcelable
 
 fun NewUser.validate(): Pair<Boolean, String> {
     val usernameValidate = username.isNotEmpty()
@@ -64,7 +67,7 @@ fun NewUser.validate(): Pair<Boolean, String> {
             && RegexUtils.emailRegex.matches(email)
 
     if (!emailValidate) {
-        return false to "Невалидный почта"
+        return false to "Невалидная почта"
     }
 
     return true to ""

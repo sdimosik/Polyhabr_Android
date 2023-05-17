@@ -23,6 +23,25 @@ interface NetworkApi {
         @Body sorting: SortArticleRequest = SortArticleRequest(),
     ): Single<Response<ArticleListResponse>>
 
+    @GET("articles/byUser")
+    fun getArticlesByUser(
+        @Query("id") id: Long,
+        @Query("offset") offset: Int,
+        @Query("size") size: Int,
+    ): Single<Response<ArticleListResponse>>
+
+    @GET("articles/my")
+    fun getMyArticles(
+        @Query("offset") offset: Int,
+        @Query("size") size: Int,
+    ): Single<Response<ArticleListResponse>>
+
+    @GET("articles/getFavArticles")
+    fun getFavouriteArticle(
+        @Query("offset") offset: Int,
+        @Query("size") size: Int,
+    ): Single<Response<ArticleListResponse>>
+
     @POST("articles/add_like")
     fun addLike(
         @Query("articleId") id: Long,
@@ -65,8 +84,17 @@ interface NetworkApi {
     fun signin(@Body loginRequest: LoginRequest): Single<Response<LoginResponse>>
 
     @GET("api/auth/checkFreeLogin")
-    fun checkFreeLogin(login: String): Completable
+    fun checkFreeLogin(@Query("login") login: String): Completable
 
     @GET("api/auth/checkFreeEmail")
-    fun checkFreeEmail(email: String): Completable
+    fun checkFreeEmail(@Query("email") email: String): Completable
+
+    @GET("api/auth/verify")
+    fun verifyUser(@Query("code") code: String): Completable
+
+    @PUT("users/update")
+    fun updateUser(@Body userUpdateRequest: UserUpdateRequest): Single<Response<UserUpdateResponse>>
+
+    @GET("users/me")
+    fun meUser(): Single<Response<UserMeResponse>>
 }

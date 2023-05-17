@@ -1,4 +1,4 @@
-package ru.sdimosik.polyhabr.presentaion.main.profile.reg
+package ru.sdimosik.polyhabr.presentaion.main.profile.setting
 
 import android.os.Bundle
 import android.view.View
@@ -15,18 +15,14 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.sdimosik.polyhabr.R
 import ru.sdimosik.polyhabr.common.ui.BaseFragment
-import ru.sdimosik.polyhabr.databinding.FragmentRegistrationBinding
-import ru.sdimosik.polyhabr.domain.model.toUI
+import ru.sdimosik.polyhabr.databinding.FragmentSettingProfileBinding
 
 @AndroidEntryPoint
-class RegFragment : BaseFragment(R.layout.fragment_registration) {
-    companion object {
-        fun newInstance() = RegFragment()
-    }
+class SettingFragment : BaseFragment(R.layout.fragment_setting_profile) {
 
-    private val binding by viewBinding(FragmentRegistrationBinding::bind)
+    private val binding by viewBinding(FragmentSettingProfileBinding::bind)
 
-    private val viewModel by viewModels<RegViewModel>()
+    private val viewModel by viewModels<SettingViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,16 +32,19 @@ class RegFragment : BaseFragment(R.layout.fragment_registration) {
         }
     }
 
-    private fun FragmentRegistrationBinding.setup() {
+    private fun FragmentSettingProfileBinding.setup() {
 
     }
 
-    private fun FragmentRegistrationBinding.subscribe() {
-        tietLoginUser.doAfterTextChanged {
-            viewModel.login = it.toString()
+    private fun FragmentSettingProfileBinding.subscribe() {
+        tietOldPassUser.doAfterTextChanged {
+            viewModel.oldPass = it.toString()
         }
-        tietPassUser.doAfterTextChanged {
-            viewModel.password = it.toString()
+        tietNewPassUser.doAfterTextChanged {
+            viewModel.newPass = it.toString()
+        }
+        tietRetryPassUser.doAfterTextChanged {
+            viewModel.retryPass = it.toString()
         }
         tietFirstNameUser.doAfterTextChanged {
             viewModel.firstName = it.toString()
@@ -56,27 +55,42 @@ class RegFragment : BaseFragment(R.layout.fragment_registration) {
         tietEmailsUser.doAfterTextChanged {
             viewModel.email = it.toString()
         }
-        btnGoRegister.setOnClickListener {
-            viewModel.register()
-        }
         ivBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
+        btnExit.setOnClickListener {
+            viewModel.exitFromAcc()
+        }
+        btnSave.setOnClickListener {
+            viewModel.updateInfo()
+        }
         viewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) {
-                btnGoRegister.showLoading()
+                btnSave.showLoading()
             } else {
-                btnGoRegister.hideLoading()
+                btnSave.hideLoading()
+            }
+        }
+        viewModel.meUser.observe(viewLifecycleOwner) {
+            tietFirstNameUser.setText(it.name)
+            tietLastNameUser.setText(it.surname)
+            tietEmailsUser.setText(it.email)
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.goBaseAuth.collectLatest {
+                    val param = bundleOf("exit" to true)
+                    findNavController().navigate(
+                        R.id.action_fragment_profile_setting_to_fragment_profile,
+                        param
+                    )
+                }
             }
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.goConfirmScreen.collectLatest {
-                    val bundle = bundleOf("newUser" to it)
-                    findNavController().navigate(
-                        R.id.action_fragment_reg_to_fragment_confirm_reg,
-                        bundle
-                    )
+                viewModel.goBack.collectLatest {
+                    requireActivity().onBackPressed()
                 }
             }
         }

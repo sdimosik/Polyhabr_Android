@@ -2,6 +2,8 @@ package ru.sdimosik.polyhabr.data.db
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 import ru.sdimosik.polyhabr.data.db.model.AuthTokenEntity
@@ -15,9 +17,14 @@ class AuthStorage @Inject constructor(
     private val context: Context
 ) : IAuthStorage {
 
-    private val preferences = context.getSharedPreferences(
-        APP_PREFERENCES_NAME,
-        Context.MODE_PRIVATE
+    var masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
+    private val preferences = EncryptedSharedPreferences.create(
+        "secret_shared_prefs",
+        masterKeyAlias,
+        context,
+        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
     private val prefSubject = BehaviorSubject.createDefault(preferences)
 
@@ -44,7 +51,7 @@ class AuthStorage @Inject constructor(
     }
 
     override fun getToken(): AuthTokenEntity? {
-        return context.getSharedPreferences(APP_PREFERENCES_NAME, Context.MODE_PRIVATE)
+        return preferences
             .getParcelable(STORAGE_TOKEN, null)
     }
 
@@ -52,7 +59,7 @@ class AuthStorage @Inject constructor(
         return prefSubject
             .firstOrError()
             .editSharedPreferences {
-                clear()
+                remove(STORAGE_TOKEN)
             }
     }
 }
