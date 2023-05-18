@@ -4,18 +4,29 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import retrofit2.Response
+import okhttp3.*
+import okhttp3.RequestBody.Companion.toRequestBody
 import ru.sdimosik.polyhabr.common.utils.NetworkUtils
+import ru.sdimosik.polyhabr.data.file.ReadFileResult
 import ru.sdimosik.polyhabr.data.network.NetworkApi
+import ru.sdimosik.polyhabr.data.network.model.article.ArticleCreateResponse
+import ru.sdimosik.polyhabr.data.network.model.article.ArticleRequest
+import ru.sdimosik.polyhabr.data.network.model.article.ArticleResponse
+import ru.sdimosik.polyhabr.data.network.model.article_type.ArticleTypeListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentGetParam
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
 import ru.sdimosik.polyhabr.data.network.model.comment.toDomain
+import ru.sdimosik.polyhabr.data.network.model.discipline.DisciplineTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeRequest
+import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeResponse
 import ru.sdimosik.polyhabr.data.network.model.user.*
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 import ru.sdimosik.polyhabr.data.toDomain
 import ru.sdimosik.polyhabr.domain.model.ArticleDomain
 import ru.sdimosik.polyhabr.domain.model.ArticleListDomain
+import ru.sdimosik.polyhabr.domain.model.CommentDomain
 import ru.sdimosik.polyhabr.domain.model.CommentListDomain
 import ru.sdimosik.polyhabr.domain.repository.INetworkRepository
 import javax.inject.Inject
@@ -23,6 +34,13 @@ import javax.inject.Inject
 class NetworkRepository @Inject constructor(
     private val networkApi: NetworkApi
 ) : INetworkRepository {
+    override fun createArticle(articleRequest: ArticleRequest): Single<ArticleCreateResponse> {
+        return networkApi.createArticle(articleRequest)
+            .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
     override fun getArticles(param: ArticlesParam): Single<ArticleListDomain> =
         networkApi.getArticles(param.offset, param.size, param.sorting ?: SortArticleRequest.EMPTY)
             .subscribeOn(Schedulers.io())
@@ -93,16 +111,10 @@ class NetworkRepository @Inject constructor(
             .map { it.toDomain() }
     }
 
-    override fun createComment(id: Long, text: String): Completable {
+    override fun createComment(id: Long, text: String): Single<CommentDomain> {
         return networkApi.createComment(CommentRequest(articleId = id, text = text))
             .map(NetworkUtils::unwrap)
-            .flatMapCompletable {
-                if (it.isSuccess) {
-                    Completable.complete()
-                } else {
-                    Completable.error(Throwable("Ошибка при создании комментария"))
-                }
-            }
+            .map { it.toDomain() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
@@ -154,6 +166,68 @@ class NetworkRepository @Inject constructor(
 
     override fun meUser(): Single<UserMeResponse> {
         return networkApi.meUser()
+            .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun getTags(offset: Int, size: Int): Single<TagTypeListResponse> {
+        return networkApi.getTags(offset = offset, size = size)
+            .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun createTag(tagTypeRequest: TagTypeRequest): Single<TagTypeResponse> {
+        return networkApi.createTag(tagTypeRequest)
+            .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun getArticleTypes(offset: Int, size: Int): Single<ArticleTypeListResponse> {
+        return networkApi.getArticleTypes(offset = offset, size = size)
+            .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun getDisciplines(offset: Int, size: Int): Single<DisciplineTypeListResponse> {
+        return networkApi.getDisciplines(offset = offset, size = size)
+            .map(NetworkUtils::unwrap)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun savePdfToArticle(
+        articleId: Long,
+        readFileResult: ReadFileResult,
+    ): Completable {
+        val bytes = readFileResult.bytes
+        val fileName = readFileResult.fileName
+
+        val fileRequestBody = bytes.toRequestBody()
+        val articleRequestBody = articleId.toString().toRequestBody()
+
+        val fullMultipartRequestBody = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("file", fileName, fileRequestBody)
+            .addFormDataPart("articleId", articleId.toString())
+            .build()
+        return networkApi.savePdfToArticle(fullMultipartRequestBody)
+            .flatMapCompletable {
+                if (it.isSuccessful) {
+                    Completable.complete()
+                } else {
+                    Completable.error(RuntimeException("Ошибка при сохранении файла"))
+                }
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    override fun downFile(docId: String): Single<ResponseBody> {
+        return networkApi.downFile(docId)
             .map(NetworkUtils::unwrap)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

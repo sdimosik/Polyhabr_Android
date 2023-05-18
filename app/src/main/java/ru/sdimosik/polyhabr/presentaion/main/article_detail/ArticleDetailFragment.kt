@@ -1,7 +1,12 @@
 package ru.sdimosik.polyhabr.presentaion.main.article_detail
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +26,7 @@ import ru.sdimosik.polyhabr.databinding.FragmentArticleDetailBinding
 import ru.sdimosik.polyhabr.presentaion.main.article_detail.adapter.CommentAdapter
 import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.ArticleItem
 import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.MicroAdapter
+import ru.sdimosik.polyhabr.utils.getInternalStorageDirectoryPath
 
 @AndroidEntryPoint
 class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
@@ -42,6 +48,22 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
     private val tagAdapter by lazy { MicroAdapter() }
     private val sharedViewPool by lazy { RecyclerView.RecycledViewPool() }
 
+    private val REQUIRED_PERMISSIONS = arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+    )
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val denied = permissions.entries.filter { !it.value }.map { it.key }
+        if (denied.isNotEmpty()) {
+            switchToastStyleToError("В разрешении отказано")
+        } else {
+            switchToastStyleToSuccess("Разрешения получены")
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.setup()
@@ -49,6 +71,32 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
     }
 
     private fun FragmentArticleDetailBinding.setup() {
+        article.pdfId?.let {
+            flFile.visibility = View.VISIBLE
+        } ?: run {
+            flFile.visibility = View.GONE
+        }
+        clFileClick.setOnClickListener {
+            var res = false
+            REQUIRED_PERMISSIONS.forEach {
+                res = res or (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    it
+                ) != PackageManager.PERMISSION_GRANTED)
+            }
+            if (res) {
+                requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
+            } else {
+                article.pdfId?.let { pdfId ->
+                    viewModel.download(
+                        requireContext(),
+                        pdfId,
+                        getInternalStorageDirectoryPath(requireContext()),
+                        "${pdfId}.pdf"
+                    )
+                }
+            }
+        }
         viewModel.loadComments(article.id)
         tvHeaderTitle.text = article.type?.name ?: "Публикация"
         rvComments.apply {
@@ -125,6 +173,13 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.error.collectLatest {
                     switchToastStyleToError(it)
+                }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.success.collectLatest {
+                    switchToastStyleToSuccess(it)
                 }
             }
         }

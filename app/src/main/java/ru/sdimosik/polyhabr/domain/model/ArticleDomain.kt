@@ -1,7 +1,6 @@
 package ru.sdimosik.polyhabr.domain.model
 
 import android.os.Parcelable
-import androidx.navigation.NavArgs
 import kotlinx.parcelize.Parcelize
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleType
 import ru.sdimosik.polyhabr.data.network.model.user.UserOtherResponse
@@ -43,4 +42,5 @@ fun ArticleDomain.toUI() = ArticleItem(
     listTag = listTag.map { MicroUI(it) },
     isLike = isLiked,
     text = text,
+    pdfId = pdfId
 )
