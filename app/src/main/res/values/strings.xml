@@ -40,6 +40,7 @@
     <string name="fragment_setting_new_pass">Новый пароль</string>
     <string name="fragment_setting_retry_pass">Подтверждение пароля</string>
     <string name="fragment_setting_exit_btn">Выйти из аккаунта</string>
+    <string name="fragment_article_create_title">Новая публикация</string>
 
 
     <string name="fragment_profile_tab_my_articles">Публикации</string>
@@ -47,6 +48,21 @@
     <string name="fragment_setting">Настройки</string>
 
     <string name="wait">Подождите</string>
+    <string name="fragment_create_article_type_header">Тип публикации</string>
+    <string name="fragment_create_discipline_header">Дисциплина работы</string>
+    <string name="fragment_create_title_header">Заголовок работы</string>
+    <string name="fragment_create_preview_header">Превью</string>
+    <string name="fragment_create_preview_hint">Введите текст для превью</string>
+    <string name="fragment_create_file_header">Файл и текст работы</string>
+    <string name="fragment_create_pick_file">Выбрать файл</string>
+    <string name="fragment_create_delete_pick_file">Удалить файл</string>
+    <string name="fragment_create_article_btn">Создать статью</string>
+
+
+    <string name="fragment_create_title_hint">Введите заголовок</string>
+    <string name="fragment_create_text_hint">Введите текст публикации</string>
+    <string name="fragment_create_article_success">Публикация создана</string>
+    <string name="fragment_article_detail_download_file">Скачать файл</string>
 
 
 </resources>

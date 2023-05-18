@@ -15,4 +15,11 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentL
         params.style = CustomToastStyle(R.layout.toast_error, Gravity.TOP, 0, 30)
         Toaster.show(params)
     }
+
+    protected fun switchToastStyleToSuccess(text: String) {
+        val params = ToastParams()
+        params.text = text
+        params.style = CustomToastStyle(R.layout.toast_success, Gravity.TOP, 0, 30)
+        Toaster.show(params)
+    }
 }

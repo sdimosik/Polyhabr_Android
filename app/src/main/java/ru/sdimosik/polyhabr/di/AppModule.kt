@@ -44,4 +44,9 @@ interface AppModule {
     fun bindAuthInteractor(
         authInteractor: AuthInteractor
     ): IAuthInteractor
+
+    @Binds
+    fun bindFileInteractor(
+        fileInteractor: FileInteractor
+    ): IFileInteractor
 }

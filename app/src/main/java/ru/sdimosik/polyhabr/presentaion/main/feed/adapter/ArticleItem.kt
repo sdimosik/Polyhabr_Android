@@ -14,6 +14,7 @@ data class ArticleItem(
     val title: String? = null,
     val previewText: String?,
     val text: String? = null,
+    val pdfId: String?,
 
     val isLike: Boolean?,
     val likesCount: Int?,

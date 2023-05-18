@@ -81,15 +81,14 @@
                 <TextView
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/blackest"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvAuthor"
-                    tools:text="Необъяснимо, но вполне логично! Что скрывает в себе квантовая механика? Что скрывает в себе квантовая механика?Что скрывает в себе квантовая механика?" />
+                    tools:text="Необъяснимеаника?" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvDiscipline"
@@ -184,6 +183,48 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <FrameLayout
+                android:id="@+id/flFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/customborder_gray"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/clItemArticle">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clFileClick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <TextView
+                        android:id="@+id/tvDownloadFile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/fragment_article_detail_download_file"
+                        android:textColor="?colorOnSecondary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/ivDocs"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivDocs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_doc"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </FrameLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clComment"
                 android:layout_width="match_parent"
@@ -192,7 +233,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/customborder_gray"
                 android:padding="16dp"
-                app:layout_constraintTop_toBottomOf="@id/clItemArticle">
+                app:layout_constraintTop_toBottomOf="@id/flFile">
 
                 <TextView
                     android:id="@+id/tvCommentTitle"

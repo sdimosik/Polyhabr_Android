@@ -3,6 +3,7 @@ package ru.sdimosik.polyhabr.domain.interactor
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentGetParam
+import ru.sdimosik.polyhabr.domain.model.CommentDomain
 import ru.sdimosik.polyhabr.domain.model.CommentListDomain
 import ru.sdimosik.polyhabr.domain.repository.INetworkRepository
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class CommentInteractor @Inject constructor(
         return networkRepository.getCommentsByArticleId(commentGetParam)
     }
 
-    override fun createComment(id: Long, text: String): Completable {
+    override fun createComment(id: Long, text: String): Single<CommentDomain> {
         return networkRepository.createComment(id, text)
     }
 }
@@ -22,5 +23,5 @@ class CommentInteractor @Inject constructor(
 interface ICommentInteractor {
     fun getCommentsByArticleId(commentGetParam: CommentGetParam): Single<CommentListDomain>
 
-    fun createComment(id: Long, text: String): Completable
+    fun createComment(id: Long, text: String): Single<CommentDomain>
 }

@@ -2,19 +2,34 @@ package ru.sdimosik.polyhabr.data.network
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
+import ru.sdimosik.polyhabr.data.network.model.article.ArticleCreateResponse
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleListResponse
+import ru.sdimosik.polyhabr.data.network.model.article.ArticleRequest
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleResponse
+import ru.sdimosik.polyhabr.data.network.model.article_type.ArticleTypeListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentCreateResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
+import ru.sdimosik.polyhabr.data.network.model.comment.CommentResponse
+import ru.sdimosik.polyhabr.data.network.model.discipline.DisciplineTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.file.FileResponse
+import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeRequest
+import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeResponse
 import ru.sdimosik.polyhabr.data.network.model.user.*
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 
 
 interface NetworkApi {
+
+    @POST("articles/create")
+    fun createArticle(@Body articleRequest: ArticleRequest): Single<Response<ArticleCreateResponse>>
 
     @POST("articles")
     fun getArticles(
@@ -75,7 +90,7 @@ interface NetworkApi {
     ): Single<Response<CommentListResponse>>
 
     @POST("comment/create")
-    fun createComment(@Body param: CommentRequest): Single<Response<CommentCreateResponse>>
+    fun createComment(@Body param: CommentRequest): Single<Response<CommentResponse>>
 
     @POST("api/auth/signupmob")
     fun signup(@Body newUser: NewUser): Completable
@@ -97,4 +112,38 @@ interface NetworkApi {
 
     @GET("users/me")
     fun meUser(): Single<Response<UserMeResponse>>
+
+    @GET("tag_type")
+    fun getTags(
+        @Query("offset") offset: Int,
+        @Query("size") size: Int
+    ): Single<Response<TagTypeListResponse>>
+
+    @POST("tag_type/create")
+    fun createTag(
+        @Body tagTypeRequest: TagTypeRequest
+    ): Single<Response<TagTypeResponse>>
+
+    @GET("article_types")
+    fun getArticleTypes(
+        @Query("offset") offset: Int,
+        @Query("size") size: Int
+    ): Single<Response<ArticleTypeListResponse>>
+
+    @GET("discipline_type")
+    fun getDisciplines(
+        @Query("offset") offset: Int,
+        @Query("size") size: Int
+    ): Single<Response<DisciplineTypeListResponse>>
+
+
+    @POST("files")
+    fun savePdfToArticle(
+        @Body multipartBody: RequestBody,
+    ): Single<Response<FileResponse>>
+
+    @GET("files/{Id}/download")
+    fun downFile(
+        @Path("Id") docId: String,
+    ): Single<Response<ResponseBody>>
 }
