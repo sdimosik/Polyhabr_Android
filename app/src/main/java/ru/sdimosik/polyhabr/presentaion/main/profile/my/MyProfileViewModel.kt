@@ -7,10 +7,4 @@ import javax.inject.Inject
 @HiltViewModel
 class MyProfileViewModel @Inject constructor(
 
-) : BaseViewModel() {
-
-    fun pickTab(tapPos: Int) {
-        TODO("Not yet implemented")
-    }
-
-}
+) : BaseViewModel()

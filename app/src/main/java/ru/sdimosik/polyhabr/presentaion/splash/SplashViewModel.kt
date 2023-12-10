@@ -25,9 +25,6 @@ import javax.inject.Inject
 class SplashViewModel @Inject constructor(
     private val authInteractor: IAuthInteractor
 ) : BaseViewModel() {
-    companion object {
-        private const val DELAY = 1000L
-    }
 
     private val _command = MutableStateFlow<SplashActions?>(null)
     val command = _command.asStateFlow()

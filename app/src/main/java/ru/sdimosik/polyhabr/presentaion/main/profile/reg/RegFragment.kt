@@ -31,13 +31,8 @@ class RegFragment : BaseFragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            setup()
             subscribe()
         }
-    }
-
-    private fun FragmentRegistrationBinding.setup() {
-
     }
 
     private fun FragmentRegistrationBinding.subscribe() {

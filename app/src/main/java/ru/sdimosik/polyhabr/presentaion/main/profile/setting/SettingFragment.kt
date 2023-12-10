@@ -27,13 +27,8 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            setup()
             subscribe()
         }
-    }
-
-    private fun FragmentSettingProfileBinding.setup() {
-
     }
 
     private fun FragmentSettingProfileBinding.subscribe() {

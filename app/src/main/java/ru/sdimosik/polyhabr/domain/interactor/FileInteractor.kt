@@ -29,6 +29,7 @@ class FileInteractor @Inject constructor(
         return networkRepository.downFile(docId)
     }
 
+    @SuppressWarnings("UseCheckOrError")
     private fun tryReadFile(context: Context, localUri: String): ReadFileResult {
         val contentResolver = context.contentResolver
         val androidUri = Uri.parse(localUri)

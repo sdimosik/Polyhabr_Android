@@ -38,8 +38,6 @@ class MyProfileFragment : BaseFragment(R.layout.fragment_my_profile) {
 
     private val binding by viewBinding(FragmentMyProfileBinding::bind)
 
-    private val viewModel by viewModels<MyProfileViewModel>()
-
     private val helper: ViewPagerWithTabLayoutHelper by lazy {
         ViewPagerWithTabLayoutHelper(
             this,

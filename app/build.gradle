@@ -5,9 +5,16 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'com.google.dagger.hilt.android'
+    id("io.gitlab.arturbosch.detekt").version("1.22.0")
 }
 
 apply from: "$rootProject.projectDir/dependencies.gradle"
+
+detekt {
+    toolVersion = "1.22.0"
+    config = files("config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
+}
 
 android {
     namespace 'ru.sdimosik.polyhabr'
@@ -83,6 +90,7 @@ dependencies {
     implementation loadingbutton
     implementation swipeToRefresh
     implementation android_crypto
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.68'
 
     kapt hiltCompiler
 }

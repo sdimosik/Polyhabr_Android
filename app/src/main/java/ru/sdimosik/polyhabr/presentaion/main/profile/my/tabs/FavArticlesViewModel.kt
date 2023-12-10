@@ -2,7 +2,6 @@ package ru.sdimosik.polyhabr.presentaion.main.profile.my.tabs
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.kotlin.addTo
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -10,9 +9,7 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import ru.sdimosik.polyhabr.common.ui.BaseViewModel
-import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.domain.interactor.IArticlesInteractor
-import ru.sdimosik.polyhabr.domain.interactor.IAuthInteractor
 import ru.sdimosik.polyhabr.domain.model.ArticleDomain
 import ru.sdimosik.polyhabr.domain.model.toUI
 import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.ArticleItem
@@ -22,8 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavArticlesViewModel @Inject constructor(
-    private val articlesInteractor: IArticlesInteractor,
-    private val authInteractor: IAuthInteractor
+    private val articlesInteractor: IArticlesInteractor
 ) : BaseViewModel() {
     private val _articles = MutableLiveData<List<ArticleItem>>(mutableListOf())
     val articles: MutableLiveData<List<ArticleItem>> = _articles

@@ -207,7 +207,7 @@ class NetworkRepository @Inject constructor(
         val fileName = readFileResult.fileName
 
         val fileRequestBody = bytes.toRequestBody()
-        val articleRequestBody = articleId.toString().toRequestBody()
+        articleId.toString().toRequestBody()
 
         val fullMultipartRequestBody = MultipartBody.Builder()
             .setType(MultipartBody.FORM)

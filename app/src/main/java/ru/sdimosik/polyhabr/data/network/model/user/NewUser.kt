@@ -19,6 +19,7 @@ data class NewUser(
     var password: String
 ) : Parcelable
 
+@SuppressWarnings("CyclomaticComplexMethod")
 fun NewUser.validate(): Pair<Boolean, String> {
     val usernameValidate = username.isNotEmpty()
             && username.isNotBlank()

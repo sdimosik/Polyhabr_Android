@@ -35,13 +35,8 @@ class ConfirmRegFragment : BaseFragment(R.layout.fragment_confirm_reg) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            setup()
             subscribe()
         }
-    }
-
-    private fun FragmentConfirmRegBinding.setup() {
-
     }
 
     private fun FragmentConfirmRegBinding.subscribe() {

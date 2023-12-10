@@ -17,6 +17,7 @@ class RefreshAuthenticator @Inject constructor(
         const val RETRY = 2
     }
 
+    @SuppressWarnings("NestedBlockDepth")
     override fun authenticate(route: Route?, response: Response): Request? {
         return if (responseCount(response) > RETRY) {
             null

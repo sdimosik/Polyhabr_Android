@@ -48,6 +48,7 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
     private val tagAdapter by lazy { MicroAdapter() }
     private val sharedViewPool by lazy { RecyclerView.RecycledViewPool() }
 
+    @SuppressWarnings("VariableNaming")
     private val REQUIRED_PERMISSIONS = arrayOf(
         Manifest.permission.READ_EXTERNAL_STORAGE,
         Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -70,6 +71,7 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
         binding.subscribe()
     }
 
+    @SuppressWarnings("CyclomaticComplexMethod")
     private fun FragmentArticleDetailBinding.setup() {
         article.pdfId?.let {
             flFile.visibility = View.VISIBLE

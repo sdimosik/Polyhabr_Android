@@ -88,6 +88,7 @@ class SettingViewModel @Inject constructor(
             .addTo(disposables)
     }
 
+    @SuppressWarnings("CyclomaticComplexMethod")
     fun updateInfo() {
         val oldPassTmp = oldPass.ifEmpty { null }
         val newPassTmp = newPass.ifEmpty { null }
