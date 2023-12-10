@@ -16,6 +16,12 @@ detekt {
     buildUponDefaultConfig = true
 }
 
+task("checkAll") {
+    group "Verify"
+    description "Runs all static checks on the build"
+    dependsOn "detekt"
+}
+
 android {
     namespace 'ru.sdimosik.polyhabr'
     compileSdk 31
