@@ -27,7 +27,7 @@ jobs:
     - name: Run detekt
       run: ./gradlew checkAll
 
-    - name: Build with Gradle
+    - name: Build
       run: ./gradlew build
 
     - name: Run unit tests
