@@ -2,18 +2,17 @@ package ru.sdimosik.polyhabr.di
 
 import android.content.Context
 import androidx.viewbinding.BuildConfig
+import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Authenticator
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.sdimosik.polyhabr.data.db.AuthStorage
 import ru.sdimosik.polyhabr.data.db.IAuthStorage
 import ru.sdimosik.polyhabr.data.network.AuthTokenHeaderInteractor
 import ru.sdimosik.polyhabr.data.network.NetworkApi
@@ -67,7 +66,14 @@ class NetworkModule {
         return OkHttpClient.Builder()
             .authenticator(refreshAuthenticator)
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(ChuckerInterceptor(context))
+            .addInterceptor(
+                ChuckerInterceptor.Builder(context)
+                    .collector(ChuckerCollector(context))
+                    .maxContentLength(250000L)
+                    .redactHeaders(emptySet())
+                    .alwaysReadResponseBody(false)
+                    .build()
+            )
             .addInterceptor(authTokenHeaderInteractor)
             .build()
     }
@@ -82,7 +88,14 @@ class NetworkModule {
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(ChuckerInterceptor(context))
+            .addInterceptor(
+                ChuckerInterceptor.Builder(context)
+                    .collector(ChuckerCollector(context))
+                    .maxContentLength(250000L)
+                    .redactHeaders(emptySet())
+                    .alwaysReadResponseBody(false)
+                    .build()
+            )
             .addInterceptor(authTokenHeaderInteractor)
             .build()
     }
