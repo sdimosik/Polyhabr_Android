@@ -16,6 +16,12 @@ detekt {
     buildUponDefaultConfig = true
 }
 
+task("checkAll") {
+    group "Verify"
+    description "Runs all static checks on the build"
+    dependsOn "detekt"
+}
+
 android {
     namespace 'ru.sdimosik.polyhabr'
     compileSdk 31
@@ -81,7 +87,7 @@ dependencies {
     implementation rxkotlin
     implementation rxandroid
     implementation rxjavaadapter
-    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    implementation "com.github.chuckerteam.chucker:library:3.5.2"
     implementation adapterDelegateDSL
     implementation adapterDelegateViewBinding
     implementation 'com.github.getActivity:Toaster:12.2'

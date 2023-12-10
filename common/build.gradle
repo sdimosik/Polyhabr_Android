@@ -16,6 +16,7 @@ dependencies {
     implementation rxjava
     implementation rxkotlin
     implementation rxandroid
+    implementation junit
     implementation 'com.github.getActivity:Toaster:12.2'
 
 }
