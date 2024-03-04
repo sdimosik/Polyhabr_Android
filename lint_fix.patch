@@ -1,0 +1,522 @@
+Subject: [PATCH] lint fix
+---
+Index: app/src/main/res/drawable/fav_pressable.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/fav_pressable.xml b/app/src/main/res/drawable/fav_pressable.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/fav_pressable.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ /dev/null	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
+@@ -1,4 +0,0 @@
+-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item android:drawable="@drawable/ic_fav_pressed" android:state_pressed="true" />
+-    <item android:drawable="@drawable/ic_fav_not_pressed" />
+-</selector>
+\ No newline at end of file
+Index: app/src/main/res/drawable/ic_launcher_background.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_background.xml b/app/src/main/res/drawable/ic_launcher_background.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/ic_launcher_background.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ /dev/null	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
+@@ -1,170 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path
+-        android:fillColor="#3DDC84"
+-        android:pathData="M0,0h108v108h-108z" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M9,0L9,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,0L19,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,0L29,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,0L39,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,0L49,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,0L59,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,0L69,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,0L79,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M89,0L89,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M99,0L99,108"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,9L108,9"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,19L108,19"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,29L108,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,39L108,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,49L108,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,59L108,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,69L108,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,79L108,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,89L108,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M0,99L108,99"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,29L89,29"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,39L89,39"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,49L89,49"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,59L89,59"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,69L89,69"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M19,79L89,79"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M29,19L29,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M39,19L39,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M49,19L49,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M59,19L59,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M69,19L69,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-    <path
+-        android:fillColor="#00000000"
+-        android:pathData="M79,19L79,89"
+-        android:strokeWidth="0.8"
+-        android:strokeColor="#33FFFFFF" />
+-</vector>
+Index: app/src/main/res/drawable/like_pressable.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/like_pressable.xml b/app/src/main/res/drawable/like_pressable.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable/like_pressable.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ /dev/null	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
+@@ -1,6 +0,0 @@
+-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+-    <item android:drawable="@drawable/ic_like_pressed" android:state_checked="true" android:state_pressed="true" />
+-    <item android:drawable="@drawable/ic_like_pressed" android:state_pressed="true" />
+-    <item android:drawable="@drawable/ic_like_pressed" android:state_checked="true" />
+-    <item android:drawable="@drawable/ic_like_not_pressed" />
+-</selector>
+\ No newline at end of file
+Index: app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+===================================================================
+diff --git a/app/src/main/res/drawable-v24/ic_launcher_foreground.xml b/app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+deleted file mode 100644
+--- a/app/src/main/res/drawable-v24/ic_launcher_foreground.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ /dev/null	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
+@@ -1,30 +0,0 @@
+-<vector xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:aapt="http://schemas.android.com/aapt"
+-    android:width="108dp"
+-    android:height="108dp"
+-    android:viewportWidth="108"
+-    android:viewportHeight="108">
+-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+-        <aapt:attr name="android:fillColor">
+-            <gradient
+-                android:endX="85.84757"
+-                android:endY="92.4963"
+-                android:startX="42.9492"
+-                android:startY="49.59793"
+-                android:type="linear">
+-                <item
+-                    android:color="#44000000"
+-                    android:offset="0.0" />
+-                <item
+-                    android:color="#00000000"
+-                    android:offset="1.0" />
+-            </gradient>
+-        </aapt:attr>
+-    </path>
+-    <path
+-        android:fillColor="#FFFFFF"
+-        android:fillType="nonZero"
+-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+-        android:strokeWidth="1"
+-        android:strokeColor="#00000000" />
+-</vector>
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+deleted file mode 100644
+--- a/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ /dev/null	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
+@@ -1,5 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+-    <background android:drawable="@drawable/ic_launcher_background" />
+-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-</adaptive-icon>
+\ No newline at end of file
+Index: common/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/common/src/main/AndroidManifest.xml b/common/src/main/AndroidManifest.xml
+--- a/common/src/main/AndroidManifest.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/common/src/main/AndroidManifest.xml	(date 1709586398421)
+@@ -2,4 +2,6 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="ru.sdimosik.polyhabr.common">
+ 
++    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
++
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_feed.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_feed.xml b/app/src/main/res/layout/fragment_feed.xml
+--- a/app/src/main/res/layout/fragment_feed.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/app/src/main/res/layout/fragment_feed.xml	(date 1709585809279)
+@@ -9,7 +9,7 @@
+         android:id="@+id/textView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:text="Fragment feed"
++        android:text="@string/fragment_feed_text"
+         android:textSize="20sp"
+         android:textStyle="bold"
+         android:visibility="gone"
+Index: .idea/kotlinc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/kotlinc.xml b/.idea/kotlinc.xml
+new file mode 100644
+--- /dev/null	(date 1709583027100)
++++ b/.idea/kotlinc.xml	(date 1709583027100)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="KotlinJpsPluginSettings">
++    <option name="version" value="1.6.10" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/app/src/main/AndroidManifest.xml	(date 1709586398426)
+@@ -2,6 +2,7 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools">
+ 
++    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+     <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/app/src/main/res/values/strings.xml	(date 1709585911539)
+@@ -12,7 +12,6 @@
+     <string name="title_article">Публикация</string>
+     <string name="title_reg">Регистрация</string>
+     <string name="title_my_profile">Мой профиль</string>
+-    <string name="title_confirm_reg">Подтверждение регистрации</string>
+ 
+     <string name="fragment_splash_text">Добро пожаловать</string>
+ 
+@@ -63,6 +62,8 @@
+     <string name="fragment_create_text_hint">Введите текст публикации</string>
+     <string name="fragment_create_article_success">Публикация создана</string>
+     <string name="fragment_article_detail_download_file">Скачать файл</string>
++    <string name="fragment_feed_text">Fragment feed</string>
++    <string name="docs_content_description">docs</string>
+ 
+ 
+ </resources>
+\ No newline at end of file
+Index: .idea/migrations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/migrations.xml b/.idea/migrations.xml
+new file mode 100644
+--- /dev/null	(date 1709583027109)
++++ b/.idea/migrations.xml	(date 1709583027109)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectMigrations">
++    <option name="MigrateToGradleLocalJavaHome">
++      <set>
++        <option value="$PROJECT_DIR$" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/.idea/gradle.xml	(date 1709583027096)
+@@ -4,9 +4,8 @@
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+-        <option name="testRunner" value="GRADLE" />
+-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
+@@ -14,6 +13,7 @@
+             <option value="$PROJECT_DIR$/common" />
+           </set>
+         </option>
++        <option name="resolveExternalAnnotations" value="false" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: app/src/main/res/layout/item_comment.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_comment.xml b/app/src/main/res/layout/item_comment.xml
+--- a/app/src/main/res/layout/item_comment.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/app/src/main/res/layout/item_comment.xml	(date 1709585887042)
+@@ -33,7 +33,7 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="8dp"
+-        android:textSize="10sp"
++        android:textSize="11sp"
+         app:layout_constraintBottom_toTopOf="@+id/tvTextComment"
+         app:layout_constraintStart_toEndOf="@+id/tvCommentAuthor"
+         app:layout_constraintTop_toTopOf="parent"
+Index: default_config.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/default_config.gradle b/default_config.gradle
+--- a/default_config.gradle	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/default_config.gradle	(date 1709586182025)
+@@ -8,11 +8,11 @@
+ apply from: "$rootProject.projectDir/dependencies.gradle"
+ 
+ android {
+-    compileSdk 31
++    compileSdk 33
+ 
+     defaultConfig {
+         minSdk 24
+-        targetSdk 31
++        targetSdk 33
+ 
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+         consumerProguardFiles "consumer-rules.pro"
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1709583027113)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1709583027113)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <value>
++      <entry key="app">
++        <State />
++      </entry>
++    </value>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/.idea/misc.xml	(date 1709583027105)
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_18_PREVIEW" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="18" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/app/build.gradle	(date 1709586182029)
+@@ -14,6 +14,7 @@
+     toolVersion = "1.22.0"
+     config = files("config/detekt/detekt.yml")
+     buildUponDefaultConfig = true
++    baseline = file("$rootDir/detekt-baseline.xml") // Path to the baseline file
+ }
+ 
+ task("checkAll") {
+@@ -24,12 +25,12 @@
+ 
+ android {
+     namespace 'ru.sdimosik.polyhabr'
+-    compileSdk 31
++    compileSdk 33
+ 
+     defaultConfig {
+         applicationId "ru.sdimosik.polyhabr"
+         minSdk 24
+-        targetSdk 31
++        targetSdk 33
+         versionCode 1
+         versionName "1.0"
+ 
+Index: app/src/main/res/layout/fragment_article_detail.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_article_detail.xml b/app/src/main/res/layout/fragment_article_detail.xml
+--- a/app/src/main/res/layout/fragment_article_detail.xml	(revision 608abbf213c8bb773183e7306e3c31fad92df1d3)
++++ b/app/src/main/res/layout/fragment_article_detail.xml	(date 1709585871747)
+@@ -219,7 +219,8 @@
+                         android:src="@drawable/ic_doc"
+                         app:layout_constraintBottom_toBottomOf="parent"
+                         app:layout_constraintStart_toStartOf="parent"
+-                        app:layout_constraintTop_toTopOf="parent" />
++                        app:layout_constraintTop_toTopOf="parent"
++                        android:contentDescription="@string/docs_content_description" />
+                 </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+ 

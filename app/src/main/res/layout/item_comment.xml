@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:textSize="10sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toTopOf="@+id/tvTextComment"
         app:layout_constraintStart_toEndOf="@+id/tvCommentAuthor"
         app:layout_constraintTop_toTopOf="parent"
