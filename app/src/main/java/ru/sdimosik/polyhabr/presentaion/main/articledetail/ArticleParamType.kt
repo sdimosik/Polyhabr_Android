@@ -1,4 +1,4 @@
-package ru.sdimosik.polyhabr.presentaion.main.article_detail
+package ru.sdimosik.polyhabr.presentaion.main.articledetail
 
 import android.os.Bundle
 import androidx.navigation.NavType

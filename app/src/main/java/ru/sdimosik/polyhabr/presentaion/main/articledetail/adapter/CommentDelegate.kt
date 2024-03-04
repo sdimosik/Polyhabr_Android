@@ -1,4 +1,4 @@
-package ru.sdimosik.polyhabr.presentaion.main.article_detail.adapter
+package ru.sdimosik.polyhabr.presentaion.main.articledetail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

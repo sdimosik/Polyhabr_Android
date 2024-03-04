@@ -1,4 +1,4 @@
-package ru.sdimosik.polyhabr.data.network.model.tag_type
+package ru.sdimosik.polyhabr.data.network.model.tagtype
 
 import com.google.gson.annotations.SerializedName
 

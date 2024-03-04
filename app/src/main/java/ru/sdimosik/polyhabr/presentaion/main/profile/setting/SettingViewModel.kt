@@ -134,6 +134,24 @@ class SettingViewModel @Inject constructor(
             return
         }
 
+        getSavedToken(
+            oldPassTmp = oldPassTmp,
+            newPassTmp = newPassTmp,
+            retryPassTmp = retryPassTmp,
+            firstNameTmp = firstNameTmp,
+            lastNameTmp = lastNameTmp,
+            emailTmp = emailTmp
+        )
+    }
+
+    private fun getSavedToken(
+        oldPassTmp: String?,
+        newPassTmp: String?,
+        retryPassTmp: String?,
+        firstNameTmp: String?,
+        lastNameTmp: String?,
+        emailTmp: String?
+    ) {
         authInteractor.getSavedToken()
             .flatMap {
                 if (it.isPresent) {
