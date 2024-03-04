@@ -28,6 +28,7 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting_profile) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             subscribe()
+            subscribe1()
         }
     }
 
@@ -66,6 +67,9 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting_profile) {
                 btnSave.hideLoading()
             }
         }
+    }
+
+    private fun FragmentSettingProfileBinding.subscribe1() {
         viewModel.meUser.observe(viewLifecycleOwner) {
             tietFirstNameUser.setText(it.name)
             tietLastNameUser.setText(it.surname)

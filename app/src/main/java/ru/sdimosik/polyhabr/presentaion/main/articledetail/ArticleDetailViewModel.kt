@@ -1,4 +1,4 @@
-package ru.sdimosik.polyhabr.presentaion.main.article_detail
+package ru.sdimosik.polyhabr.presentaion.main.articledetail
 
 import android.content.ContentValues
 import android.content.Context
@@ -21,7 +21,7 @@ import ru.sdimosik.polyhabr.domain.interactor.IArticlesInteractor
 import ru.sdimosik.polyhabr.domain.interactor.ICommentInteractor
 import ru.sdimosik.polyhabr.domain.interactor.IFileInteractor
 import ru.sdimosik.polyhabr.domain.model.toUI
-import ru.sdimosik.polyhabr.presentaion.main.article_detail.adapter.CommentItem
+import ru.sdimosik.polyhabr.presentaion.main.articledetail.adapter.CommentItem
 import ru.sdimosik.polyhabr.utils.ErrorHelper
 import java.io.ByteArrayInputStream
 import java.io.File

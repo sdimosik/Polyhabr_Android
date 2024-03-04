@@ -26,15 +26,11 @@ class RefreshAuthenticator @Inject constructor(
             authStorage.getToken()?.refreshToken?.let { oldToken ->
                 val param = TokenRefreshRequest(oldToken)
 
-                val res = try {
-                    refreshApi.refreshToken(param)
-                        .subscribeOn(Schedulers.io())
-                        .blockingGet()
-                } catch (exception: Exception) {
-                    null
-                }
+                val res = refreshApi.refreshToken(param)
+                    .subscribeOn(Schedulers.io())
+                    .blockingGet()
 
-                res?.let { tokenResponse ->
+                res.let { tokenResponse ->
                     authStorage.getToken()?.let { oldToken ->
                         val token = oldToken.copy(
                             accessToken = tokenResponse.accessToken,

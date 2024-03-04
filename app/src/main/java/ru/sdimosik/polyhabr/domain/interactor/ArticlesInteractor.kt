@@ -4,11 +4,11 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleCreateResponse
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleRequest
-import ru.sdimosik.polyhabr.data.network.model.article_type.ArticleTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.articletype.ArticleTypeListResponse
 import ru.sdimosik.polyhabr.data.network.model.discipline.DisciplineTypeListResponse
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeListResponse
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeRequest
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeResponse
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeRequest
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeResponse
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.domain.model.ArticleDomain
 import ru.sdimosik.polyhabr.domain.model.ArticleListDomain

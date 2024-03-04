@@ -1,9 +1,8 @@
-package ru.sdimosik.polyhabr.presentaion.main.article_detail
+package ru.sdimosik.polyhabr.presentaion.main.articledetail
 
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Environment
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -23,7 +22,7 @@ import ru.sdimosik.polyhabr.common.extensions.show
 import ru.sdimosik.polyhabr.common.ui.BaseFragment
 import ru.sdimosik.polyhabr.common.ui.adapter.PaginationGridListener
 import ru.sdimosik.polyhabr.databinding.FragmentArticleDetailBinding
-import ru.sdimosik.polyhabr.presentaion.main.article_detail.adapter.CommentAdapter
+import ru.sdimosik.polyhabr.presentaion.main.articledetail.adapter.CommentAdapter
 import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.ArticleItem
 import ru.sdimosik.polyhabr.presentaion.main.feed.adapter.MicroAdapter
 import ru.sdimosik.polyhabr.utils.getInternalStorageDirectoryPath
@@ -69,36 +68,10 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
         super.onViewCreated(view, savedInstanceState)
         binding.setup()
         binding.subscribe()
+        binding.setupRecycler()
     }
 
-    @SuppressWarnings("CyclomaticComplexMethod")
-    private fun FragmentArticleDetailBinding.setup() {
-        article.pdfId?.let {
-            flFile.visibility = View.VISIBLE
-        } ?: run {
-            flFile.visibility = View.GONE
-        }
-        clFileClick.setOnClickListener {
-            var res = false
-            REQUIRED_PERMISSIONS.forEach {
-                res = res or (ActivityCompat.checkSelfPermission(
-                    requireContext(),
-                    it
-                ) != PackageManager.PERMISSION_GRANTED)
-            }
-            if (res) {
-                requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
-            } else {
-                article.pdfId?.let { pdfId ->
-                    viewModel.download(
-                        requireContext(),
-                        pdfId,
-                        getInternalStorageDirectoryPath(requireContext()),
-                        "${pdfId}.pdf"
-                    )
-                }
-            }
-        }
+    private fun FragmentArticleDetailBinding.setupRecycler() {
         viewModel.loadComments(article.id)
         tvHeaderTitle.text = article.type?.name ?: "Публикация"
         rvComments.apply {
@@ -127,6 +100,35 @@ class ArticleDetailFragment : BaseFragment(R.layout.fragment_article_detail) {
         } else {
             rvDiscipline.show()
             disciplineAdapter.submitList(article.listDisciplineName)
+        }
+    }
+    @SuppressWarnings("CyclomaticComplexMethod")
+    private fun FragmentArticleDetailBinding.setup() {
+        article.pdfId?.let {
+            flFile.visibility = View.VISIBLE
+        } ?: run {
+            flFile.visibility = View.GONE
+        }
+        clFileClick.setOnClickListener {
+            var res = false
+            REQUIRED_PERMISSIONS.forEach {
+                res = res or (ActivityCompat.checkSelfPermission(
+                    requireContext(),
+                    it
+                ) != PackageManager.PERMISSION_GRANTED)
+            }
+            if (res) {
+                requestPermissionLauncher.launch(REQUIRED_PERMISSIONS)
+            } else {
+                article.pdfId?.let { pdfId ->
+                    viewModel.download(
+                        requireContext(),
+                        pdfId,
+                        getInternalStorageDirectoryPath(requireContext()),
+                        "${pdfId}.pdf"
+                    )
+                }
+            }
         }
 
         if (article.listTag.isEmpty()) {

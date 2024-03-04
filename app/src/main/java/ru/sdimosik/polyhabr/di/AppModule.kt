@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ru.sdimosik.polyhabr.data.repository_impl.NetworkRepository
+import ru.sdimosik.polyhabr.data.repositoryimpl.NetworkRepository
 import ru.sdimosik.polyhabr.domain.interactor.*
 import ru.sdimosik.polyhabr.domain.repository.INetworkRepository
 import javax.inject.Singleton

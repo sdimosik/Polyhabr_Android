@@ -1,7 +1,7 @@
 package ru.sdimosik.polyhabr.domain.model
 
 import ru.sdimosik.polyhabr.data.network.model.user.UserOtherResponse
-import ru.sdimosik.polyhabr.presentaion.main.article_detail.adapter.CommentItem
+import ru.sdimosik.polyhabr.presentaion.main.articledetail.adapter.CommentItem
 
 data class CommentDomain(
     val id: Long,

@@ -2,20 +2,16 @@ package ru.sdimosik.polyhabr.domain.repository
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import retrofit2.Response
-import retrofit2.http.*
 import ru.sdimosik.polyhabr.data.file.ReadFileResult
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleCreateResponse
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleRequest
-import ru.sdimosik.polyhabr.data.network.model.article_type.ArticleTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.articletype.ArticleTypeListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentGetParam
 import ru.sdimosik.polyhabr.data.network.model.discipline.DisciplineTypeListResponse
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeListResponse
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeRequest
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeResponse
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeRequest
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeResponse
 import ru.sdimosik.polyhabr.data.network.model.user.*
 import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.domain.model.ArticleDomain

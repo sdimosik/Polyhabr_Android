@@ -58,6 +58,7 @@ class CreateFragment : BaseFragment(R.layout.fragment_create) {
         with(binding) {
             setup()
             subscribe()
+            subscribe1()
         }
     }
 
@@ -68,6 +69,28 @@ class CreateFragment : BaseFragment(R.layout.fragment_create) {
             acetTextArticle.setText("")
             viewModel.clearFields()
             switchToastStyleToSuccess("Поля очищены")
+        }
+    }
+
+    private fun FragmentCreateBinding.subscribe1() {
+        viewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                btnCreateArticle.showLoading()
+            } else {
+                btnCreateArticle.hideLoading()
+            }
+        }
+        btnCreateArticle.setOnClickListener {
+            viewModel.createArticle()
+        }
+        acetTitleArticle.addTextChangedListener {
+            viewModel.title = it.toString()
+        }
+        acetPreviewArticle.addTextChangedListener {
+            viewModel.previewText = it.toString()
+        }
+        acetTextArticle.addTextChangedListener {
+            viewModel.text = it.toString()
         }
     }
 
@@ -112,25 +135,6 @@ class CreateFragment : BaseFragment(R.layout.fragment_create) {
             createListRadioButton(fmDisciplineContainer, list) {
                 viewModel.storeDiscipline(it)
             }
-        }
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            if (it) {
-                btnCreateArticle.showLoading()
-            } else {
-                btnCreateArticle.hideLoading()
-            }
-        }
-        btnCreateArticle.setOnClickListener {
-            viewModel.createArticle()
-        }
-        acetTitleArticle.addTextChangedListener {
-            viewModel.title = it.toString()
-        }
-        acetPreviewArticle.addTextChangedListener {
-            viewModel.previewText = it.toString()
-        }
-        acetTextArticle.addTextChangedListener {
-            viewModel.text = it.toString()
         }
     }
 

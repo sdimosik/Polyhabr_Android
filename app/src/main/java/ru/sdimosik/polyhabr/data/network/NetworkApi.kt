@@ -2,7 +2,6 @@ package ru.sdimosik.polyhabr.data.network
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
@@ -11,18 +10,16 @@ import ru.sdimosik.polyhabr.data.network.model.article.ArticleCreateResponse
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleListResponse
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleRequest
 import ru.sdimosik.polyhabr.data.network.model.article.ArticleResponse
-import ru.sdimosik.polyhabr.data.network.model.article_type.ArticleTypeListResponse
-import ru.sdimosik.polyhabr.data.network.model.comment.CommentCreateResponse
+import ru.sdimosik.polyhabr.data.network.model.articletype.ArticleTypeListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentListResponse
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentRequest
 import ru.sdimosik.polyhabr.data.network.model.comment.CommentResponse
 import ru.sdimosik.polyhabr.data.network.model.discipline.DisciplineTypeListResponse
 import ru.sdimosik.polyhabr.data.network.model.file.FileResponse
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeListResponse
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeRequest
-import ru.sdimosik.polyhabr.data.network.model.tag_type.TagTypeResponse
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeListResponse
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeRequest
+import ru.sdimosik.polyhabr.data.network.model.tagtype.TagTypeResponse
 import ru.sdimosik.polyhabr.data.network.model.user.*
-import ru.sdimosik.polyhabr.data.network.param.ArticlesParam
 import ru.sdimosik.polyhabr.data.network.param.SortArticleRequest
 
 
