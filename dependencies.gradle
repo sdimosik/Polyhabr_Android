@@ -36,7 +36,8 @@ ext {
             rxjavaadapter                 : '2.9.0',
             timber                        : '5.0.1',
             loadingbutton                 : '1.7',
-            android_crypto                : '1.0.0'
+            android_crypto                : '1.0.0',
+            mockkVersion                  : '1.13.10',
     ]
 
     navigation = ['navigarion-fragment': "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
@@ -91,6 +92,7 @@ ext {
 
     guava = "com.google.guava:guava:${versions.guava}"
     guavaKotlin = "org.jetbrains.kotlinx:kotlinx-coroutines-guava:${versions.guavaKotlin}"
+    cortest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.guavaKotlin}"
     callbackToFutureAdapter = "androidx.concurrent:concurrent-futures:${versions.callbackToFutureAdapter}"
 
     cicerone = "com.github.terrakok:cicerone:${versions.cicerone}"
@@ -107,4 +109,6 @@ ext {
     loadingbutton = "com.github.koushikcse:LoadingButton:${versions.loadingbutton}"
 
     android_crypto = "androidx.security:security-crypto:${versions.android_crypto}"
+
+    mockk = "io.mockk:mockk:${versions.mockkVersion}"
 }
