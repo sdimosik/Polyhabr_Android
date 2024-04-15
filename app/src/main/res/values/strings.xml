@@ -12,7 +12,6 @@
     <string name="title_article">Публикация</string>
     <string name="title_reg">Регистрация</string>
     <string name="title_my_profile">Мой профиль</string>
-    <string name="title_confirm_reg">Подтверждение регистрации</string>
 
     <string name="fragment_splash_text">Добро пожаловать</string>
 
@@ -63,6 +62,8 @@
     <string name="fragment_create_text_hint">Введите текст публикации</string>
     <string name="fragment_create_article_success">Публикация создана</string>
     <string name="fragment_article_detail_download_file">Скачать файл</string>
+    <string name="fragment_feed_text">Fragment feed</string>
+    <string name="docs_content_description">docs</string>
 
 
 </resources>
