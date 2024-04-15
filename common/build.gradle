@@ -16,7 +16,32 @@ dependencies {
     implementation rxjava
     implementation rxkotlin
     implementation rxandroid
-    implementation junit
     implementation 'com.github.getActivity:Toaster:12.2'
 
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
+    testCompileOnly "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+    testImplementation 'org.hamcrest:hamcrest:2.1'
+    testImplementation 'com.google.guava:guava:28.1-android'
+    testImplementation 'org.mockito:mockito-core:4.3.1'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.3.1'
+    testImplementation 'org.mockito:mockito-inline:4.3.1'
+    testImplementation 'joda-time:joda-time:2.10.4'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+
+    androidTestUtil 'androidx.test:orchestrator:1.4.2'
+    androidTestImplementation 'org.mockito:mockito-android:3.1.0'
+    androidTestImplementation 'androidx.core:core-ktx:1.12.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'org.junit.vintage:junit-vintage-engine:5.5.2'
+    androidTestImplementation 'com.kaspersky.android-components:kaspresso:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'io.qameta.allure:allure-kotlin-model:2.2.5'
+    androidTestImplementation 'io.qameta.allure:allure-kotlin-commons:2.2.5'
+    androidTestImplementation 'io.qameta.allure:allure-kotlin-junit4:2.2.5'
+    androidTestImplementation 'io.qameta.allure:allure-kotlin-android:2.2.5'
+    androidTestImplementation 'ru.psbank:testit-module:0.1.4'
+    androidTestImplementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
