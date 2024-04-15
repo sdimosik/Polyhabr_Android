@@ -1,10 +1,10 @@
-package ru.sdimosik.polyhabr.data.network.model.tag_type
+package ru.sdimosik.polyhabr.data.network.model.articletype
 
 import com.google.gson.annotations.SerializedName
 
-data class TagTypeListResponse(
+data class ArticleTypeListResponse(
     @SerializedName("contents")
-    val contents: List<TagTypeResponse>,
+    val contents: List<ArticleTypeResponse>,
     @SerializedName("totalElements")
     val totalElements: Long,
     @SerializedName("totalPages")

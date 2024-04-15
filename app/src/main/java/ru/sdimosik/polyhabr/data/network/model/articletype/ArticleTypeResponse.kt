@@ -1,4 +1,4 @@
-package ru.sdimosik.polyhabr.data.network.model.article_type
+package ru.sdimosik.polyhabr.data.network.model.articletype
 
 import com.google.gson.annotations.SerializedName
 
